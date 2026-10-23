@@ -5,13 +5,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* Layout: blue hero with a wave-animated name + board illustration → About → 01 Projects (filterable, browser-frame cards) → code band → 02 Skills → 03 Experience zig-zag timeline → blue contact → footer. Single committed light look. */
+/* Layout: violet hero with a wave-animated name + board illustration → About → 01 Projects (filterable, browser-frame cards) → code band → 02 Skills → 03 Experience zig-zag timeline → violet contact → footer. Single committed light look. */
 :root{
-  --blue:#0F5289; --blue-2:#0B3F6B; --blue-3:#082F50; --blue-soft:#E8F0F7; --blue-line:#C9DAEA; --sky:#A9D1F5;
-  --bg:#FBFAF7; --bg-alt:#F4F2ED; --surface:#FFFFFF; --ink:#1C2430; --ink-2:#5D6673; --line:#E7E4DD; --gold:#F2C879;
+  --blue:#5B2C9F; --blue-2:#47227F; --blue-3:#2E1556; --blue-soft:#F1EAFB; --blue-line:#DDCEF2; --sky:#D9BEFA;
+  --bg:#FBF9FD; --bg-alt:#F5F2F9; --surface:#FFFFFF; --ink:#231B30; --ink-2:#675F73; --line:#E8E3EE; --gold:#F2C879;
   --f-display:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
-  --shadow:0 40px 70px -34px rgba(8,47,80,.45),0 12px 28px -14px rgba(28,36,48,.22);
+  --shadow:0 40px 70px -34px rgba(46,21,86,.45),0 12px 28px -14px rgba(35,27,48,.22);
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -41,7 +41,7 @@ button{font:inherit;color:inherit}
 .top{position:fixed;top:0;left:0;right:0;z-index:90;color:#fff;transition:background .35s,box-shadow .35s,color .35s,transform .5s cubic-bezier(.16,1,.3,1)}
 .top.hide{transform:translateY(-104%)}
 .top .wrap{display:flex;align-items:center;gap:20px;height:70px}
-.top.solid{background:rgba(251,250,247,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+.top.solid{background:rgba(251,249,253,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.02em}
 .mono-badge{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#fff;color:var(--blue);font:800 15px/1 var(--f-display);letter-spacing:-.04em;transition:.35s}
 .top.solid .mono-badge{background:var(--blue);color:#fff}
@@ -73,8 +73,8 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:clamp(620px,92svh,900px);background:var(--blue);color:#fff;overflow:hidden;isolation:isolate;display:grid;align-items:center}
-.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(900px 600px at 85% 5%,rgba(169,209,245,.28),transparent 65%),radial-gradient(800px 520px at 0% 100%,rgba(4,24,42,.4),transparent 70%)}
+.hero{position:relative;min-height:clamp(620px,92svh,900px);background:linear-gradient(135deg,var(--blue) 35%,#8B3AA8);color:#fff;overflow:hidden;isolation:isolate;display:grid;align-items:center}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(900px 600px at 85% 5%,rgba(217,190,250,.28),transparent 65%),radial-gradient(800px 520px at 0% 100%,rgba(24,8,48,.4),transparent 70%)}
 .staff{position:absolute;left:-5%;right:-5%;top:62%;height:180px;width:110%;z-index:-1;opacity:.2;pointer-events:none}
 .staff path{fill:none;stroke:#fff;stroke-width:1.5;stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 3.2s cubic-bezier(.16,1,.3,1) .3s forwards}
 .staff path:nth-child(2){animation-delay:.42s}.staff path:nth-child(3){animation-delay:.54s}.staff path:nth-child(4){animation-delay:.66s}.staff path:nth-child(5){animation-delay:.78s}
@@ -93,7 +93,7 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .rot span{grid-area:1/1;transform:translateY(110%);opacity:0;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .5s;white-space:nowrap}
 .rot span.on{transform:none;opacity:1}
 .rot span.out{transform:translateY(-110%);opacity:0}
-.tagline{font-family:var(--f-mono);font-size:14px;font-weight:500;color:#DCEAF7;margin-top:18px;letter-spacing:.02em;animation:fadeUp 1s cubic-bezier(.16,1,.3,1) 1.05s both}
+.tagline{font-family:var(--f-mono);font-size:14px;font-weight:500;color:#E9DCFA;margin-top:18px;letter-spacing:.02em;animation:fadeUp 1s cubic-bezier(.16,1,.3,1) 1.05s both}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;animation:fadeUp 1s cubic-bezier(.16,1,.3,1) 1.2s both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:14px;font:700 16px/1 var(--f-display);text-decoration:none;transition:transform .35s cubic-bezier(.2,1.5,.4,1),background .25s,color .25s;border:0;cursor:pointer}
@@ -109,7 +109,7 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .portrait .frame svg{width:100%;height:100%;display:block}
 .portrait .back{position:absolute;inset:0;border-radius:200px 200px 32px 32px;border:2px dashed rgba(255,255,255,.4);transform:translate(24px,20px) rotate(3deg);z-index:-1}
 .trace{fill:none;stroke:var(--sky);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 10;animation:flow 3.2s linear infinite}
-.trace.b{stroke:#6FA8DC;animation-duration:4.4s}
+.trace.b{stroke:#B48AEA;animation-duration:4.4s}
 @keyframes flow{to{stroke-dashoffset:-64}}
 .via{fill:var(--gold);animation:blip 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes blip{0%,100%{opacity:.5;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
@@ -157,7 +157,7 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .fact .subj{display:flex;flex-wrap:wrap;gap:8px}
 .fact .subj span{padding:9px 15px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-weight:700;font-size:16px}
 .pin{width:14px;height:14px;border-radius:50%;background:var(--blue);animation:pulse 2.2s ease-out infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(15,82,137,.45)}100%{box-shadow:0 0 0 14px rgba(15,82,137,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(91,44,159,.45)}100%{box-shadow:0 0 0 14px rgba(91,44,159,0)}}
 @media (max-width:900px){.about{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.facts .fact:last-child{grid-column:1/-1}}
 @media (max-width:520px){.facts{grid-template-columns:1fr}.fact{min-height:170px}}
 
@@ -174,9 +174,9 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .proj[hidden]{display:none}
 .proj .shot{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:#fff;border:1px solid var(--line)}
 .proj:hover .shot{--ty:-8px}
-.bar{display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;background:#F1EFEA;border-bottom:1px solid var(--line)}
-.bar i{width:11px;height:11px;border-radius:50%;background:#D9D5CC;display:block;flex:none}
-.bar .url{margin-left:14px;height:22px;flex:0 1 260px;min-width:0;border-radius:7px;background:#fff;font:600 11px/22px var(--f-mono);color:#6B7380;padding:0 10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.bar{display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;background:#F2EFF5;border-bottom:1px solid var(--line)}
+.bar i{width:11px;height:11px;border-radius:50%;background:#DAD5E0;display:block;flex:none}
+.bar .url{margin-left:14px;height:22px;flex:0 1 260px;min-width:0;border-radius:7px;background:#fff;font:600 11px/22px var(--f-mono);color:#716B7E;padding:0 10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .view{position:relative;height:340px;overflow:hidden;isolation:isolate}
 .proj .meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px}
 .proj h3{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.025em}
@@ -229,19 +229,19 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .pword span{font-size:2.6cqw;font-weight:700;opacity:.9}
 @keyframes pword{0%,50%{opacity:0;transform:scale(.82)}60%{opacity:1;transform:scale(1)}92%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.03)}}
 @media (prefers-reduced-motion:reduce){.pi,.vf,.sw,.flash{display:none}.pword{opacity:1;animation:none}}
-.v-quiz{background:linear-gradient(160deg,#EEF4FA,#DCE8F4);padding:20px;display:flex;flex-direction:column;gap:14px}
+.v-quiz{background:linear-gradient(160deg,#F3ECFB,#E4D8F5);padding:20px;display:flex;flex-direction:column;gap:14px}
 .qtop{display:flex;align-items:center;gap:12px;font:700 11px/1 var(--f-mono);color:var(--blue);letter-spacing:.08em;text-transform:uppercase}
 .qbar{flex:1;height:8px;border-radius:8px;background:#fff;overflow:hidden}
 .qbar i{display:block;height:100%;width:10%;background:var(--blue);border-radius:8px;transition:width .6s cubic-bezier(.16,1,.3,1)}
 .qscore{background:var(--blue);color:#fff;padding:6px 9px;border-radius:8px}
-.qq{background:#fff;border-radius:16px;padding:14px 16px;font-weight:700;font-size:15.5px;line-height:1.3;letter-spacing:-.01em;box-shadow:0 14px 24px -18px rgba(8,47,80,.5)}
+.qq{background:#fff;border-radius:16px;padding:14px 16px;font-weight:700;font-size:15.5px;line-height:1.3;letter-spacing:-.01em;box-shadow:0 14px 24px -18px rgba(46,21,86,.5)}
 .qopts{display:grid;gap:8px}
 .qo{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--blue-line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600;font-size:14.5px;cursor:pointer;transition:background .25s,border-color .25s,transform .3s cubic-bezier(.2,1.5,.4,1)}
 .qo:hover{transform:translateX(4px);border-color:var(--blue)}
 .qo b{width:24px;height:24px;border-radius:7px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font:700 12px/1 var(--f-mono);flex:none}
 .qo.ok{background:#E3F6EA;border-color:#2E9E5B}.qo.ok b{background:#2E9E5B;color:#fff}
 .qo.no{background:#FDE8E8;border-color:#D64545}.qo.no b{background:#D64545;color:#fff}
-.v-lin{background:linear-gradient(160deg,#0B3F6B,#082F50);color:#fff;padding:20px;display:flex;flex-direction:column;gap:14px}
+.v-lin{background:linear-gradient(160deg,#47227F,#2E1556);color:#fff;padding:20px;display:flex;flex-direction:column;gap:14px}
 .lhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .lhead b{font-size:20px;letter-spacing:-.02em}
 .lvl{font:700 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:#3A2A06;padding:7px 10px;border-radius:999px}
@@ -255,30 +255,30 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .lrow.me{background:rgba(242,200,121,.18);box-shadow:inset 0 0 0 1px rgba(242,200,121,.5)}
 .lrow.me .bar2 i{background:var(--gold)}
 @keyframes grow{0%{transform:scaleX(.1)}30%,100%{transform:scaleX(1)}}
-.v-pcb{background:#0B3F6B}
+.v-pcb{background:#47227F}
 .v-pcb svg,.v-fpv svg,.v-net svg{position:absolute;inset:0;width:100%;height:100%}
-.v-fpv{background:linear-gradient(160deg,#082F50,#0B3F6B)}
+.v-fpv{background:linear-gradient(160deg,#2E1556,#47227F)}
 .prop{transform-box:fill-box;transform-origin:center;animation:spin .35s linear infinite}
 .prop.r{animation-direction:reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hover-bob{animation:bob 4s ease-in-out infinite}
 .wire{fill:none;stroke:var(--sky);stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:5 6;animation:flow 6s linear infinite}
-.v-net{background:#1C2430}
-.v-term{background:#141A23;color:#DCE6F2;padding:0;display:flex;flex-direction:column}
-.tbar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#1C2430}
-.tbar i{width:10px;height:10px;border-radius:50%;background:#3A4556;display:block}
-.tbar span{margin-left:10px;font:700 11px/1 var(--f-mono);color:#7D8A99}
+.v-net{background:#231B30}
+.v-term{background:#17111F;color:#E6DEF2;padding:0;display:flex;flex-direction:column}
+.tbar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#231B30}
+.tbar i{width:10px;height:10px;border-radius:50%;background:#40365A;display:block}
+.tbar span{margin-left:10px;font:700 11px/1 var(--f-mono);color:#8A8299}
 .tbody{padding:16px 18px;font:500 13px/1.7 var(--f-mono);white-space:pre-wrap;overflow:hidden;flex:1}
-.tbody .p{color:var(--sky)}.tbody .g{color:#6FD39B}.tbody .d{color:#7D8A99}.tbody .y{color:var(--gold)}
+.tbody .p{color:var(--sky)}.tbody .g{color:#6FD39B}.tbody .d{color:#8A8299}.tbody .y{color:var(--gold)}
 .caret{display:inline-block;width:8px;height:15px;background:var(--sky);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 
 /* code band */
 .code-band{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:clamp(56px,6vw,88px)}
-.code{background:#141A23;color:#DCE6F2;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);min-width:0}
-.code .tbar span{color:#9AA7B8}
+.code{background:#17111F;color:#E6DEF2;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);min-width:0}
+.code .tbar span{color:#A79FB8}
 .code pre{margin:0;padding:18px 20px 22px;font:500 13px/1.75 var(--f-mono);overflow-x:auto;tab-size:2}
-.code .k{color:#8FC2F0}.code .c{color:#6B7A8D}.code .n{color:var(--gold)}.code .s{color:#6FD39B}.code .f{color:#E8EEF7;font-weight:700}
+.code .k{color:#C9A6F5}.code .c{color:#7A7090}.code .n{color:var(--gold)}.code .s{color:#6FD39B}.code .f{color:#EEE8F7;font-weight:700}
 .code-h{font:700 13px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:clamp(50px,6vw,80px) 0 -4px}
 @media (max-width:900px){.code-band{grid-template-columns:1fr}}
 
@@ -311,7 +311,7 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .zz .dot::after{content:"";position:absolute;inset:-8px;border-radius:24px;border:2px solid var(--blue);opacity:0;transform:scale(.7)}
 .zz.lit .dot::after{animation:litRing 1s cubic-bezier(.16,1,.3,1)}
 @keyframes litRing{0%{opacity:.7;transform:scale(.7)}100%{opacity:0;transform:scale(1.35)}}
-.zz.lit .card{border-color:var(--blue-line);box-shadow:0 24px 40px -30px rgba(15,82,137,.55)}
+.zz.lit .card{border-color:var(--blue-line);box-shadow:0 24px 40px -30px rgba(91,44,159,.55)}
 .zz.key .dot{background:var(--blue);color:#fff}
 .zz .card{grid-row:1;background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px 28px;min-width:0;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s,opacity .8s cubic-bezier(.16,1,.3,1),translate 1s cubic-bezier(.16,1,.3,1)}
 .zz .card:hover{--ty:-4px;box-shadow:var(--shadow)}
@@ -322,7 +322,7 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 .zz:nth-child(odd) .card{grid-column:3}
 .zz:nth-child(odd) .yr{grid-column:1;justify-self:end;padding-right:24px}
 .zz.key .card{background:var(--blue);border-color:var(--blue);color:#fff}
-.zz.key .card li,.zz.key .card p{color:#DCEAF7}
+.zz.key .card li,.zz.key .card p{color:#E9DCFA}
 .zz.key .when{color:var(--sky)}
 .zz .when{font:700 12px/1.3 var(--f-mono);letter-spacing:.08em;color:var(--blue);text-transform:uppercase}
 .zz h3{font-size:24px;letter-spacing:-.02em;margin:10px 0 10px}
@@ -345,7 +345,7 @@ html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.so
 }
 
 /* ---------- contact ---------- */
-.contact{background:var(--blue);color:#fff;overflow:hidden;isolation:isolate}
+.contact{background:linear-gradient(135deg,var(--blue) 35%,#8B3AA8);color:#fff;overflow:hidden;isolation:isolate}
 .contact .giant-bg{position:absolute;right:-3%;bottom:-14%;font-size:clamp(180px,30vw,440px);font-weight:800;letter-spacing:-.07em;line-height:.8;color:rgba(255,255,255,.07);z-index:-1;white-space:nowrap;pointer-events:none}
 .contact .eyebrow{color:var(--sky)}
 .c-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,6vw,90px);align-items:end}
@@ -363,7 +363,7 @@ footer{background:var(--ink);color:#fff;padding-block:30px;font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 footer .lg{display:flex;align-items:center;gap:10px;font-weight:800}
 footer .mono-badge{background:var(--blue);color:#fff;width:32px;height:32px;font-size:13px}
-footer a{text-decoration:none;color:#B9C0CB}
+footer a{text-decoration:none;color:#BDB6CB}
 footer a:hover{color:#fff}
 
 /* reveal on scroll (visible by default; script adds .pre only to items below the fold) */
@@ -448,7 +448,7 @@ footer a:hover{color:#fff}
       <div class="frame">
         <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Stylised circuit board with a JP chip in the centre">
           <defs>
-            <radialGradient id="pg" cx="50%" cy="42%" r="70%"><stop offset="0" stop-color="#1B6AAB"/><stop offset="1" stop-color="#082F50"/></radialGradient>
+            <radialGradient id="pg" cx="50%" cy="42%" r="70%"><stop offset="0" stop-color="#7A44C4"/><stop offset="1" stop-color="#2E1556"/></radialGradient>
           </defs>
           <rect width="400" height="500" fill="url(#pg)"/>
           <g class="traces">
@@ -469,8 +469,8 @@ footer a:hover{color:#fff}
             <circle class="via" cx="220" cy="110" r="5" style="animation-delay:-1.1s"/><circle class="via" cx="190" cy="400" r="5" style="animation-delay:-2.2s"/>
           </g>
           <g>
-            <rect x="140" y="200" width="120" height="120" rx="14" fill="#0B3F6B" stroke="#fff" stroke-width="3"/>
-            <g stroke="#A9D1F5" stroke-width="3" stroke-linecap="round">
+            <rect x="140" y="200" width="120" height="120" rx="14" fill="#47227F" stroke="#fff" stroke-width="3"/>
+            <g stroke="#D9BEFA" stroke-width="3" stroke-linecap="round">
               <path d="M160 200v-14M180 200v-14M200 200v-14M220 200v-14M240 200v-14"/>
               <path d="M160 320v14M180 320v14M200 320v14M220 320v14M240 320v14"/>
               <path d="M140 220h-14M140 240h-14M140 260h-14M140 280h-14M140 300h-14"/>
@@ -624,8 +624,8 @@ footer a:hover{color:#fff}
           <div class="bar"><i></i><i></i><i></i><span class="url">board-v1.kicad_pcb</span></div>
           <div class="view v-pcb">
             <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="PCB layout with a microcontroller, traces and pads">
-              <rect width="600" height="340" fill="#0B3F6B"/>
-              <g fill="none" stroke="#14598F" stroke-width="1"><path d="M0 40H600M0 80H600M0 120H600M0 160H600M0 200H600M0 240H600M0 280H600M0 320H600"/><path d="M40 0V340M80 0V340M120 0V340M160 0V340M200 0V340M240 0V340M280 0V340M320 0V340M360 0V340M400 0V340M440 0V340M480 0V340M520 0V340M560 0V340"/></g>
+              <rect width="600" height="340" fill="#47227F"/>
+              <g fill="none" stroke="#6A38B0" stroke-width="1"><path d="M0 40H600M0 80H600M0 120H600M0 160H600M0 200H600M0 240H600M0 280H600M0 320H600"/><path d="M40 0V340M80 0V340M120 0V340M160 0V340M200 0V340M240 0V340M280 0V340M320 0V340M360 0V340M400 0V340M440 0V340M480 0V340M520 0V340M560 0V340"/></g>
               <g>
                 <path class="trace" d="M60 70 H150 L190 110 H230"/>
                 <path class="trace b" d="M60 110 H120 L160 150 H230"/>
@@ -640,11 +640,11 @@ footer a:hover{color:#fff}
               </g>
               <g fill="#F2C879"><circle cx="60" cy="70" r="7"/><circle cx="60" cy="110" r="7"/><circle cx="60" cy="170" r="7"/><circle cx="60" cy="230" r="7"/><circle cx="60" cy="270" r="7"/><circle cx="550" cy="70" r="7"/><circle cx="550" cy="150" r="7"/><circle cx="550" cy="230" r="7"/><circle cx="550" cy="270" r="7"/></g>
               <g><circle class="via" cx="190" cy="110" r="5"/><circle class="via" cx="160" cy="150" r="5" style="animation-delay:-1s"/><circle class="via" cx="430" cy="110" r="5" style="animation-delay:-1.6s"/><circle class="via" cx="440" cy="190" r="5" style="animation-delay:-.5s"/></g>
-              <rect x="230" y="80" width="140" height="180" rx="10" fill="#082F50" stroke="#fff" stroke-width="2.5"/>
-              <rect x="258" y="100" width="84" height="46" rx="5" fill="#1B6AAB" stroke="#A9D1F5" stroke-width="1.5"/>
+              <rect x="230" y="80" width="140" height="180" rx="10" fill="#2E1556" stroke="#fff" stroke-width="2.5"/>
+              <rect x="258" y="100" width="84" height="46" rx="5" fill="#7A44C4" stroke="#D9BEFA" stroke-width="1.5"/>
               <text x="300" y="128" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700" font-size="14" fill="#fff">ESP32</text>
-              <g stroke="#A9D1F5" stroke-width="3" stroke-linecap="round"><path d="M240 110h-10M240 150h-10M240 190h-10M240 230h-10M360 110h10M360 150h10M360 190h10M360 230h10"/></g>
-              <g font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#A9D1F5"><text x="258" y="190">I2C · SPI · UART</text><text x="258" y="212">3V3 · GND</text></g>
+              <g stroke="#D9BEFA" stroke-width="3" stroke-linecap="round"><path d="M240 110h-10M240 150h-10M240 190h-10M240 230h-10M360 110h10M360 150h10M360 190h10M360 230h10"/></g>
+              <g font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#D9BEFA"><text x="258" y="190">I2C · SPI · UART</text><text x="258" y="212">3V3 · GND</text></g>
             </svg>
           </div>
         </div>
@@ -670,20 +670,20 @@ footer a:hover{color:#fff}
                 <path class="wire" d="M40 90 L110 130 L190 90 M110 130 V220"/>
                 <path class="wire" d="M40 90 V180" style="animation-delay:-2s"/>
                 <circle cx="110" cy="88" r="9" fill="none" stroke="#F2C879" stroke-width="1.6"/>
-                <text x="40" y="250" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#A9D1F5">ENCLOSURE · CAD → PRINT</text>
+                <text x="40" y="250" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#D9BEFA">ENCLOSURE · CAD → PRINT</text>
               </g>
               <g class="hover-bob" transform="translate(430 170)">
                 <g stroke="#fff" stroke-width="7" stroke-linecap="round"><path d="M-62 -62 L62 62"/><path d="M62 -62 L-62 62"/></g>
-                <rect x="-26" y="-34" width="52" height="68" rx="12" fill="#0F5289" stroke="#fff" stroke-width="3"/>
-                <rect x="-14" y="-24" width="28" height="12" rx="4" fill="#A9D1F5"/>
+                <rect x="-26" y="-34" width="52" height="68" rx="12" fill="#5B2C9F" stroke="#fff" stroke-width="3"/>
+                <rect x="-14" y="-24" width="28" height="12" rx="4" fill="#D9BEFA"/>
                 <circle cx="0" cy="12" r="7" fill="#F2C879"/>
-                <g fill="#082F50" stroke="#fff" stroke-width="3"><circle cx="-62" cy="-62" r="12"/><circle cx="62" cy="-62" r="12"/><circle cx="-62" cy="62" r="12"/><circle cx="62" cy="62" r="12"/></g>
-                <g fill="rgba(169,209,245,.55)">
+                <g fill="#2E1556" stroke="#fff" stroke-width="3"><circle cx="-62" cy="-62" r="12"/><circle cx="62" cy="-62" r="12"/><circle cx="-62" cy="62" r="12"/><circle cx="62" cy="62" r="12"/></g>
+                <g fill="rgba(217,190,250,.55)">
                   <ellipse class="prop" cx="-62" cy="-62" rx="46" ry="7"/><ellipse class="prop r" cx="62" cy="-62" rx="46" ry="7"/>
                   <ellipse class="prop r" cx="-62" cy="62" rx="46" ry="7"/><ellipse class="prop" cx="62" cy="62" rx="46" ry="7"/>
                 </g>
               </g>
-              <text x="350" y="310" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#A9D1F5">FPV · ESC + FC + CAM + RX</text>
+              <text x="350" y="310" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#D9BEFA">FPV · ESC + FC + CAM + RX</text>
             </svg>
           </div>
         </div>
@@ -704,8 +704,8 @@ footer a:hover{color:#fff}
           <div class="bar"><i></i><i></i><i></i><span class="url">topology · vlan-segmentation</span></div>
           <div class="view v-net">
             <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Network topology with a router, a switch, three VLANs and a RADIUS server">
-              <rect width="600" height="340" fill="#1C2430"/>
-              <g stroke="#3A4A60" stroke-width="2.5" fill="none">
+              <rect width="600" height="340" fill="#231B30"/>
+              <g stroke="#4A3A66" stroke-width="2.5" fill="none">
                 <path id="p1" d="M300 52 V108"/>
                 <path id="p2" d="M300 148 V190 M300 190 H110 V240"/>
                 <path id="p3" d="M300 190 V240"/>
@@ -713,18 +713,18 @@ footer a:hover{color:#fff}
                 <path id="p5" d="M340 128 H470 V72"/>
               </g>
               <g font-family="JetBrains Mono,monospace" font-weight="700" font-size="12">
-                <rect x="250" y="12" width="100" height="40" rx="12" fill="#0F5289"/><text x="300" y="37" text-anchor="middle" fill="#fff">Internet</text>
-                <rect x="240" y="108" width="120" height="40" rx="12" fill="#fff"/><text x="300" y="133" text-anchor="middle" fill="#0F5289">MikroTik</text>
-                <rect x="410" y="32" width="120" height="40" rx="12" fill="#2A3548" stroke="#F2C879" stroke-width="1.5"/><text x="470" y="57" text-anchor="middle" fill="#F2C879">RADIUS</text>
-                <rect x="50" y="240" width="120" height="44" rx="12" fill="#2A3548" stroke="#6FD39B" stroke-width="1.5"/><text x="110" y="260" text-anchor="middle" fill="#6FD39B">VLAN 10</text><text x="110" y="276" text-anchor="middle" fill="#9AA7B8" font-size="10">Staff</text>
-                <rect x="240" y="240" width="120" height="44" rx="12" fill="#2A3548" stroke="#A9D1F5" stroke-width="1.5"/><text x="300" y="260" text-anchor="middle" fill="#A9D1F5">VLAN 20</text><text x="300" y="276" text-anchor="middle" fill="#9AA7B8" font-size="10">Servers</text>
-                <rect x="430" y="240" width="120" height="44" rx="12" fill="#2A3548" stroke="#F58A7A" stroke-width="1.5"/><text x="490" y="260" text-anchor="middle" fill="#F58A7A">VLAN 30</text><text x="490" y="276" text-anchor="middle" fill="#9AA7B8" font-size="10">Guests</text>
-                <text x="372" y="172" fill="#9AA7B8" font-size="10">Cisco IOS switch · trunk</text>
+                <rect x="250" y="12" width="100" height="40" rx="12" fill="#5B2C9F"/><text x="300" y="37" text-anchor="middle" fill="#fff">Internet</text>
+                <rect x="240" y="108" width="120" height="40" rx="12" fill="#fff"/><text x="300" y="133" text-anchor="middle" fill="#5B2C9F">MikroTik</text>
+                <rect x="410" y="32" width="120" height="40" rx="12" fill="#2F2547" stroke="#F2C879" stroke-width="1.5"/><text x="470" y="57" text-anchor="middle" fill="#F2C879">RADIUS</text>
+                <rect x="50" y="240" width="120" height="44" rx="12" fill="#2F2547" stroke="#6FD39B" stroke-width="1.5"/><text x="110" y="260" text-anchor="middle" fill="#6FD39B">VLAN 10</text><text x="110" y="276" text-anchor="middle" fill="#A79FB8" font-size="10">Staff</text>
+                <rect x="240" y="240" width="120" height="44" rx="12" fill="#2F2547" stroke="#D9BEFA" stroke-width="1.5"/><text x="300" y="260" text-anchor="middle" fill="#D9BEFA">VLAN 20</text><text x="300" y="276" text-anchor="middle" fill="#A79FB8" font-size="10">Servers</text>
+                <rect x="430" y="240" width="120" height="44" rx="12" fill="#2F2547" stroke="#F58A7A" stroke-width="1.5"/><text x="490" y="260" text-anchor="middle" fill="#F58A7A">VLAN 30</text><text x="490" y="276" text-anchor="middle" fill="#A79FB8" font-size="10">Guests</text>
+                <text x="372" y="172" fill="#A79FB8" font-size="10">Cisco IOS switch · trunk</text>
               </g>
-              <circle cx="300" cy="170" r="14" fill="#0F5289" stroke="#fff" stroke-width="2"/>
+              <circle cx="300" cy="170" r="14" fill="#5B2C9F" stroke="#fff" stroke-width="2"/>
               <circle r="4.5" fill="#fff"><animateMotion dur="2.4s" repeatCount="indefinite" path="M300 52 V108"/></circle>
               <circle r="4.5" fill="#6FD39B"><animateMotion dur="3s" repeatCount="indefinite" begin="-.6s" path="M300 148 V190 H110 V240"/></circle>
-              <circle r="4.5" fill="#A9D1F5"><animateMotion dur="2s" repeatCount="indefinite" begin="-1s" path="M300 148 V240"/></circle>
+              <circle r="4.5" fill="#D9BEFA"><animateMotion dur="2s" repeatCount="indefinite" begin="-1s" path="M300 148 V240"/></circle>
               <circle r="4.5" fill="#F58A7A"><animateMotion dur="3.2s" repeatCount="indefinite" begin="-2s" path="M300 148 V190 H490 V240"/></circle>
               <circle r="4.5" fill="#F2C879"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.2s" path="M340 128 H470 V72"/></circle>
             </svg>
