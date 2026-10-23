@@ -1,0 +1,1223 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Jiří Pölzer Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: blue hero with a wave-animated name + board illustration → About → 01 Projects (filterable, browser-frame cards) → code band → 02 Skills → 03 Experience zig-zag timeline → blue contact → footer. Single committed light look. */
+:root{
+  --blue:#0F5289; --blue-2:#0B3F6B; --blue-3:#082F50; --blue-soft:#E8F0F7; --blue-line:#C9DAEA; --sky:#A9D1F5;
+  --bg:#FBFAF7; --bg-alt:#F4F2ED; --surface:#FFFFFF; --ink:#1C2430; --ink-2:#5D6673; --line:#E7E4DD; --gold:#F2C879;
+  --f-display:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:0 40px 70px -34px rgba(8,47,80,.45),0 12px 28px -14px rgba(28,36,48,.22);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{line-height:1.05;letter-spacing:-.03em;text-wrap:balance;margin:0;font-weight:800}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+img,svg{max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.sec{padding-block:clamp(72px,9vw,128px);position:relative}
+.h2{font-size:clamp(36px,5.4vw,70px)}
+.h2 em{font-style:normal;color:var(--blue)}
+.eyebrow{font:700 13px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";width:34px;height:3px;border-radius:2px;background:currentColor}
+.sub{font-size:clamp(17px,1.5vw,20px);color:var(--ink-2);max-width:52ch;margin-top:18px}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+
+.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .3s;position:relative}
+.tilt.hot{transition:transform .12s linear,box-shadow .5s,border-color .3s}
+
+/* ---------- top bar ---------- */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--sky);z-index:120}
+.top{position:fixed;top:0;left:0;right:0;z-index:90;color:#fff;transition:background .35s,box-shadow .35s,color .35s,transform .5s cubic-bezier(.16,1,.3,1)}
+.top.hide{transform:translateY(-104%)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:70px}
+.top.solid{background:rgba(251,250,247,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.mono-badge{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#fff;color:var(--blue);font:800 15px/1 var(--f-display);letter-spacing:-.04em;transition:.35s}
+.top.solid .mono-badge{background:var(--blue);color:#fff}
+.top.solid .logo b{color:var(--blue)}
+.nav{display:flex;gap:4px;margin-left:auto;align-items:center;margin-right:8px}
+.nav a{text-decoration:none;font-size:15px;font-weight:700;padding:9px 13px;border-radius:10px;opacity:.85;transition:.2s}
+.nav a:hover,.nav a.on{opacity:1;background:rgba(255,255,255,.16)}
+.top.solid .nav a:hover,.top.solid .nav a.on{background:var(--blue-soft);color:var(--blue)}
+.nav .cta{background:#fff;color:var(--blue);opacity:1;margin-left:6px}
+.top.solid .nav .cta{background:var(--blue);color:#fff}
+.top.solid .nav .cta:hover{background:var(--blue-2);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid currentColor;border-radius:12px;width:44px;height:44px;cursor:pointer}
+.lang{display:inline-flex;align-items:center;gap:2px;height:40px;padding:3px;border-radius:12px;border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.08);cursor:pointer;font:700 12px/1 var(--f-mono);letter-spacing:.06em;color:inherit;transition:border-color .3s,background .3s}
+.lang span{display:grid;place-items:center;min-width:34px;height:100%;padding:0 6px;border-radius:8px;opacity:.7;transition:background .25s,color .25s,opacity .25s}
+.lang:hover{background:rgba(255,255,255,.18)}
+html[data-lang="cs"] .lang [data-l="cs"],html[data-lang="en"] .lang [data-l="en"]{background:#fff;color:var(--blue);opacity:1}
+.top.solid .lang{border-color:var(--blue-line);background:var(--surface)}
+.top.solid .lang:hover{background:var(--blue-soft)}
+.top.solid .lang span{opacity:.6}
+html[data-lang="cs"] .top.solid .lang [data-l="cs"],html[data-lang="en"] .top.solid .lang [data-l="en"]{background:var(--blue);color:#fff;opacity:1}
+@media (max-width:960px){
+  .lang{margin-left:auto}
+  .burger{display:grid;place-items:center;margin-left:0}
+  .nav{position:fixed;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg);color:var(--ink);padding:10px 20px 18px;box-shadow:0 20px 30px -20px rgba(0,0,0,.3);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s}
+  .nav.open{transform:none;opacity:1;pointer-events:auto}
+  .nav a{padding:13px}
+  .nav a:hover,.nav a.on{background:var(--blue-soft);color:var(--blue)}
+  .nav .cta{background:var(--blue);color:#fff;text-align:center;margin:6px 0 0}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:clamp(620px,92svh,900px);background:var(--blue);color:#fff;overflow:hidden;isolation:isolate;display:grid;align-items:center}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(900px 600px at 85% 5%,rgba(169,209,245,.28),transparent 65%),radial-gradient(800px 520px at 0% 100%,rgba(4,24,42,.4),transparent 70%)}
+.staff{position:absolute;left:-5%;right:-5%;top:62%;height:180px;width:110%;z-index:-1;opacity:.2;pointer-events:none}
+.staff path{fill:none;stroke:#fff;stroke-width:1.5;stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 3.2s cubic-bezier(.16,1,.3,1) .3s forwards}
+.staff path:nth-child(2){animation-delay:.42s}.staff path:nth-child(3){animation-delay:.54s}.staff path:nth-child(4){animation-delay:.66s}.staff path:nth-child(5){animation-delay:.78s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero-in{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(30px,5vw,80px);align-items:center;padding-top:120px;padding-bottom:80px}
+.hero-txt{min-width:0}
+.hero .eyebrow{color:var(--sky);animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .1s both}
+.giant{font-size:clamp(64px,11.5vw,168px);line-height:.88;letter-spacing:-.06em;font-weight:800;margin:6px 0 0}
+.giant .line{display:block;overflow:hidden;padding:.16em .02em .1em;margin:-.1em 0 -.1em}
+.giant .ch{display:inline-block;animation:rise 1s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i) * 45ms + .2s)}
+.giant .lift{display:inline-block;animation:wave 6s ease-in-out infinite;animation-delay:calc(var(--i) * 90ms + 1.6s)}
+@keyframes rise{from{transform:translateY(110%)}to{transform:none}}
+@keyframes wave{0%,22%,100%{translate:0 0;color:#fff}7%{translate:0 -.1em;color:var(--sky)}13%{translate:0 .015em;color:#fff}}
+.role{font-size:clamp(20px,2.4vw,30px);font-weight:700;letter-spacing:-.02em;margin-top:clamp(22px,3vw,36px);animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .9s both}
+.rot{position:relative;display:inline-grid;overflow:hidden;vertical-align:bottom;color:var(--sky);padding-bottom:.08em}
+.rot span{grid-area:1/1;transform:translateY(110%);opacity:0;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .5s;white-space:nowrap}
+.rot span.on{transform:none;opacity:1}
+.rot span.out{transform:translateY(-110%);opacity:0}
+.tagline{font-family:var(--f-mono);font-size:14px;font-weight:500;color:#DCEAF7;margin-top:18px;letter-spacing:.02em;animation:fadeUp 1s cubic-bezier(.16,1,.3,1) 1.05s both}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;animation:fadeUp 1s cubic-bezier(.16,1,.3,1) 1.2s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:14px;font:700 16px/1 var(--f-display);text-decoration:none;transition:transform .35s cubic-bezier(.2,1.5,.4,1),background .25s,color .25s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-3px)}
+.btn.white{background:#fff;color:var(--blue);box-shadow:0 16px 30px -16px rgba(0,0,0,.5)}
+.btn.white:hover{color:var(--blue-2)}
+.btn.ghost{background:rgba(255,255,255,.1);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.btn.ghost:hover{background:rgba(255,255,255,.18)}
+
+.portrait{position:relative;justify-self:center;width:min(100%,400px);aspect-ratio:4/5;animation:popIn 1.2s cubic-bezier(.16,1,.3,1) .4s both}
+@keyframes popIn{from{opacity:0;transform:translateY(40px) scale(.94)}to{opacity:1;transform:none}}
+.portrait .frame{position:absolute;inset:0;border-radius:200px 200px 32px 32px;overflow:hidden;background:var(--blue-3);box-shadow:0 50px 80px -40px rgba(0,0,0,.6);border:6px solid rgba(255,255,255,.95)}
+.portrait .frame svg{width:100%;height:100%;display:block}
+.portrait .back{position:absolute;inset:0;border-radius:200px 200px 32px 32px;border:2px dashed rgba(255,255,255,.4);transform:translate(24px,20px) rotate(3deg);z-index:-1}
+.trace{fill:none;stroke:var(--sky);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 10;animation:flow 3.2s linear infinite}
+.trace.b{stroke:#6FA8DC;animation-duration:4.4s}
+@keyframes flow{to{stroke-dashoffset:-64}}
+.via{fill:var(--gold);animation:blip 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes blip{0%,100%{opacity:.5;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+.badge{position:absolute;z-index:5;display:flex;align-items:center;gap:10px;padding:9px 16px 9px 9px;border-radius:999px;background:#fff;color:var(--ink);font-weight:700;font-size:14.5px;box-shadow:0 20px 34px -18px rgba(0,0,0,.55);white-space:nowrap;animation:badgeIn .8s cubic-bezier(.2,1.5,.4,1) both,bob 7s ease-in-out infinite;animation-delay:var(--in),var(--dl,0s)}
+.badge .ic{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue)}
+.badge.b1{left:-44px;top:12%;--in:1.2s}
+.badge.b2{right:-48px;top:44%;--in:1.35s;--dl:-2.3s}
+.badge.b3{left:-30px;bottom:9%;--in:1.5s;--dl:-4.6s}
+@keyframes badgeIn{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;padding-top:100px}
+  .portrait{width:min(76%,330px);margin-top:10px}
+  .badge.b1{left:-24px}.badge.b2{right:-28px}.badge.b3{left:-18px}
+}
+@media (max-width:600px){
+  .portrait{width:min(78%,320px);margin-bottom:12px}
+  .badge{font-size:15px;padding:8px 14px 8px 8px}
+  .badge.b1{top:-4%;left:-10%}.badge.b2{top:auto;bottom:21%;right:-10%}.badge.b3{bottom:-4%;left:-8%}
+  .hero .deco{display:none}
+}
+.deco{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.deco i{position:absolute;display:block;opacity:var(--o,.2);color:#fff;transform:rotate(var(--r,0deg));animation:drift var(--t,16s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+.deco i svg{display:block;width:var(--s,60px);height:var(--s,60px)}
+.deco .rg{width:var(--s,80px);height:var(--s,80px);border-radius:50%;border:2px solid #fff}
+.deco .sq{width:var(--s,60px);height:var(--s,60px);border-radius:14px;border:2px solid #fff}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(var(--r,0deg))}50%{transform:translate(var(--x,18px),var(--y,-26px)) rotate(calc(var(--r,0deg) + 24deg))}}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:start}
+.about .intro{display:grid;gap:18px}
+.about .intro p{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);max-width:48ch}
+.about .intro p.lead{font-size:clamp(21px,2vw,26px);color:var(--ink);font-weight:600;letter-spacing:-.01em;line-height:1.45}
+.traits{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.traits span{padding:11px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:15.5px;transition:background .3s,color .3s,border-color .3s,transform .4s cubic-bezier(.2,1.5,.4,1)}
+.traits span:hover{background:var(--blue);border-color:var(--blue);color:#fff;transform:translateY(-3px) rotate(-2deg)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(40px,5vw,64px)}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:30px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;overflow:hidden}
+.fact:hover{--ty:-6px;box-shadow:var(--shadow);border-color:var(--blue-line)}
+.fact .k{font:700 14px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px}
+.fact b{display:block;font-size:clamp(30px,3.2vw,46px);line-height:1;letter-spacing:-.04em}
+.fact p{color:var(--ink-2);font-size:15.5px;margin-top:10px}
+.fact .big{font-size:clamp(72px,7.5vw,108px);font-weight:800;letter-spacing:-.05em;line-height:.85;color:var(--blue)}
+.fact .big small{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.02em;margin-left:8px;color:var(--ink)}
+.fact .subj{display:flex;flex-wrap:wrap;gap:8px}
+.fact .subj span{padding:9px 15px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-weight:700;font-size:16px}
+.pin{width:14px;height:14px;border-radius:50%;background:var(--blue);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(15,82,137,.45)}100%{box-shadow:0 0 0 14px rgba(15,82,137,0)}}
+@media (max-width:900px){.about{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.facts .fact:last-child{grid-column:1/-1}}
+@media (max-width:520px){.facts{grid-template-columns:1fr}.fact{min-height:170px}}
+
+/* ---------- projects ---------- */
+.proj-sec{background:var(--bg-alt)}
+.web-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 48px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(28px,4vw,44px)}
+.flt{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;border:1.5px solid var(--blue-line);background:var(--surface);font:700 14px/1 var(--f-mono);letter-spacing:.02em;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .35s cubic-bezier(.2,1.5,.4,1)}
+.flt:hover{transform:translateY(-2px);border-color:var(--blue)}
+.flt[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.flt small{font:700 12px/1 var(--f-mono);opacity:.6}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,4vw,56px) 28px;margin-top:28px}
+.proj{display:flex;flex-direction:column;gap:16px;min-width:0}
+.proj[hidden]{display:none}
+.proj .shot{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:#fff;border:1px solid var(--line)}
+.proj:hover .shot{--ty:-8px}
+.bar{display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;background:#F1EFEA;border-bottom:1px solid var(--line)}
+.bar i{width:11px;height:11px;border-radius:50%;background:#D9D5CC;display:block;flex:none}
+.bar .url{margin-left:14px;height:22px;flex:0 1 260px;min-width:0;border-radius:7px;background:#fff;font:600 11px/22px var(--f-mono);color:#6B7380;padding:0 10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.view{position:relative;height:340px;overflow:hidden;isolation:isolate}
+.proj .meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px}
+.proj h3{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.025em}
+.proj .role-l{font:700 12px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.proj p{color:var(--ink-2);max-width:60ch;font-size:16px}
+.proj ul.pts{display:grid;gap:8px;max-width:60ch}
+.proj ul.pts li{position:relative;padding-left:24px;font-size:15.5px;color:var(--ink)}
+.proj ul.pts li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:10px;border-radius:3px;background:var(--sky);box-shadow:inset 0 0 0 2px var(--blue)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font:700 12px/1 var(--f-mono);letter-spacing:.04em;padding:8px 11px;border-radius:999px;background:var(--blue-soft);color:var(--blue)}
+.ctas{display:flex;flex-wrap:wrap;gap:8px}
+.lnk{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;background:var(--surface);border:1.5px solid var(--blue-line);color:var(--blue);font-weight:700;font-size:14.5px;text-decoration:none;transition:background .25s,color .25s,border-color .25s,transform .35s cubic-bezier(.2,1.5,.4,1)}
+.lnk:hover{background:var(--blue);border-color:var(--blue);color:#fff;transform:translateY(-3px)}
+.lnk .i{width:16px;height:16px;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.lnk:hover .i{transform:translate(3px,-3px)}
+@media (max-width:860px){.projects{grid-template-columns:1fr}.view{height:300px}}
+
+/* previews */
+.v-pill{background:#D21F2C;color:#fff;container-type:size}
+.v-pill::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 60% at 80% 0%,rgba(255,255,255,.18),transparent 70%)}
+.pi{position:absolute;left:var(--x);top:var(--y);width:var(--w);color:#15171C;opacity:0;will-change:transform,opacity;backface-visibility:hidden;animation:piItem 8s cubic-bezier(.45,0,.25,1) infinite;animation-delay:var(--d,0s)}
+.pi.box{aspect-ratio:1.55;background:linear-gradient(160deg,#fff,#ECE8E3);border-radius:2cqw;box-shadow:0 2cqw 4cqw -1.5cqw rgba(0,0,0,.45);padding:5% 16% 5% 8%;display:flex;flex-direction:column;gap:.8cqw;overflow:hidden}
+.pi.box::after{content:"";position:absolute;right:0;top:0;bottom:0;width:12%;background:var(--c)}
+.pi.box b{font-size:var(--fs,3.4cqw);letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.pi.box span{font-size:calc(var(--fs,3.4cqw)*.6);font-weight:700;white-space:nowrap}
+.pi.box i{display:block;width:44%;height:1.2cqw;border-radius:1cqw;background:var(--c)}
+.pi.note{background:#FFE974;border-radius:.8cqw;box-shadow:0 2cqw 4cqw -1.5cqw rgba(0,0,0,.4);padding:2.4cqw;font:700 3.2cqw/1.15 var(--f-display);color:#1D3A8A}
+.pi.paper{aspect-ratio:.78;background:#fff;border-radius:.8cqw;box-shadow:0 2cqw 4cqw -1.5cqw rgba(0,0,0,.4);padding:3cqw}
+.pi.paper i{display:block;height:.9cqw;margin-top:2cqw;background:#D6DAE0;border-radius:.5cqw;width:var(--l,80%)}
+@keyframes piItem{
+  0%{opacity:0;transform:translate(-50%,-50%) translate(0,-70cqh) rotate(calc(var(--r) + 30deg)) scale(1)}
+  10%{opacity:1;transform:translate(-50%,-50%) translate(0,0) rotate(var(--r)) scale(1)}
+  44%{opacity:1;transform:translate(-50%,-50%) translate(0,0) rotate(var(--r)) scale(1)}
+  56%{opacity:0;transform:translate(-50%,-50%) translate(calc(50cqw - var(--x)),calc(50cqh - var(--y))) rotate(0deg) scale(.2)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(calc(50cqw - var(--x)),calc(50cqh - var(--y))) rotate(0deg) scale(.2)}
+}
+.vf{position:absolute;inset:14% 12%;opacity:0;will-change:transform,opacity;animation:vf 8s cubic-bezier(.16,1,.3,1) infinite}
+.vf i{position:absolute;width:9%;aspect-ratio:1;border:3px solid #fff}
+.vf i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:12px 0 0 0}
+.vf i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 12px 0 0}
+.vf i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 12px}
+.vf i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 12px 0}
+@keyframes vf{0%,18%{opacity:0;transform:scale(1.25)}26%{opacity:1;transform:scale(1)}46%{opacity:1;transform:scale(.97)}54%,100%{opacity:0;transform:scale(.6)}}
+.sw{position:absolute;left:14%;right:14%;top:16%;height:3px;border-radius:3px;background:#fff;box-shadow:0 0 18px 5px rgba(255,255,255,.6);opacity:0;will-change:transform,opacity;animation:sw 8s ease-in-out infinite}
+@keyframes sw{0%,27%{transform:translateY(0);opacity:0}29%{opacity:1}43%{transform:translateY(64cqh);opacity:1}45%,100%{transform:translateY(64cqh);opacity:0}}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;animation:flash 8s linear infinite;z-index:3;pointer-events:none}
+@keyframes flash{0%,46%{opacity:0}47.5%{opacity:.6}52%,100%{opacity:0}}
+.pword{position:absolute;inset:0;display:grid;place-items:center;align-content:center;text-align:center;gap:12px;padding:0 16px;opacity:0;will-change:transform,opacity;animation:pword 8s cubic-bezier(.16,1,.3,1) infinite}
+.pword b{font-size:15cqw;font-weight:800;letter-spacing:-.06em;line-height:.85}
+.pword span{font-size:2.6cqw;font-weight:700;opacity:.9}
+@keyframes pword{0%,50%{opacity:0;transform:scale(.82)}60%{opacity:1;transform:scale(1)}92%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.03)}}
+@media (prefers-reduced-motion:reduce){.pi,.vf,.sw,.flash{display:none}.pword{opacity:1;animation:none}}
+.v-quiz{background:linear-gradient(160deg,#EEF4FA,#DCE8F4);padding:20px;display:flex;flex-direction:column;gap:14px}
+.qtop{display:flex;align-items:center;gap:12px;font:700 11px/1 var(--f-mono);color:var(--blue);letter-spacing:.08em;text-transform:uppercase}
+.qbar{flex:1;height:8px;border-radius:8px;background:#fff;overflow:hidden}
+.qbar i{display:block;height:100%;width:10%;background:var(--blue);border-radius:8px;transition:width .6s cubic-bezier(.16,1,.3,1)}
+.qscore{background:var(--blue);color:#fff;padding:6px 9px;border-radius:8px}
+.qq{background:#fff;border-radius:16px;padding:14px 16px;font-weight:700;font-size:15.5px;line-height:1.3;letter-spacing:-.01em;box-shadow:0 14px 24px -18px rgba(8,47,80,.5)}
+.qopts{display:grid;gap:8px}
+.qo{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--blue-line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600;font-size:14.5px;cursor:pointer;transition:background .25s,border-color .25s,transform .3s cubic-bezier(.2,1.5,.4,1)}
+.qo:hover{transform:translateX(4px);border-color:var(--blue)}
+.qo b{width:24px;height:24px;border-radius:7px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font:700 12px/1 var(--f-mono);flex:none}
+.qo.ok{background:#E3F6EA;border-color:#2E9E5B}.qo.ok b{background:#2E9E5B;color:#fff}
+.qo.no{background:#FDE8E8;border-color:#D64545}.qo.no b{background:#D64545;color:#fff}
+.v-lin{background:linear-gradient(160deg,#0B3F6B,#082F50);color:#fff;padding:20px;display:flex;flex-direction:column;gap:14px}
+.lhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lhead b{font-size:20px;letter-spacing:-.02em}
+.lvl{font:700 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:#3A2A06;padding:7px 10px;border-radius:999px}
+.xp{height:10px;border-radius:10px;background:rgba(255,255,255,.14);overflow:hidden}
+.xp i{display:block;height:100%;width:70%;border-radius:10px;background:linear-gradient(90deg,var(--sky),#fff);animation:xp 6s ease-in-out infinite}
+@keyframes xp{0%{width:18%}60%,100%{width:88%}}
+.lb{display:grid;gap:8px;margin-top:2px}
+.lrow{display:grid;grid-template-columns:22px 62px 1fr 48px;align-items:center;gap:10px;font:700 12px/1 var(--f-mono);padding:9px 10px;border-radius:12px;background:rgba(255,255,255,.07)}
+.lrow .bar2{height:8px;border-radius:8px;background:rgba(255,255,255,.12);overflow:hidden}
+.lrow .bar2 i{display:block;height:100%;width:var(--w);border-radius:8px;background:var(--sky);transform-origin:left;animation:grow 6s cubic-bezier(.16,1,.3,1) infinite;animation-delay:var(--d,0s)}
+.lrow.me{background:rgba(242,200,121,.18);box-shadow:inset 0 0 0 1px rgba(242,200,121,.5)}
+.lrow.me .bar2 i{background:var(--gold)}
+@keyframes grow{0%{transform:scaleX(.1)}30%,100%{transform:scaleX(1)}}
+.v-pcb{background:#0B3F6B}
+.v-pcb svg,.v-fpv svg,.v-net svg{position:absolute;inset:0;width:100%;height:100%}
+.v-fpv{background:linear-gradient(160deg,#082F50,#0B3F6B)}
+.prop{transform-box:fill-box;transform-origin:center;animation:spin .35s linear infinite}
+.prop.r{animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hover-bob{animation:bob 4s ease-in-out infinite}
+.wire{fill:none;stroke:var(--sky);stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:5 6;animation:flow 6s linear infinite}
+.v-net{background:#1C2430}
+.v-term{background:#141A23;color:#DCE6F2;padding:0;display:flex;flex-direction:column}
+.tbar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#1C2430}
+.tbar i{width:10px;height:10px;border-radius:50%;background:#3A4556;display:block}
+.tbar span{margin-left:10px;font:700 11px/1 var(--f-mono);color:#7D8A99}
+.tbody{padding:16px 18px;font:500 13px/1.7 var(--f-mono);white-space:pre-wrap;overflow:hidden;flex:1}
+.tbody .p{color:var(--sky)}.tbody .g{color:#6FD39B}.tbody .d{color:#7D8A99}.tbody .y{color:var(--gold)}
+.caret{display:inline-block;width:8px;height:15px;background:var(--sky);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* code band */
+.code-band{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:clamp(56px,6vw,88px)}
+.code{background:#141A23;color:#DCE6F2;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);min-width:0}
+.code .tbar span{color:#9AA7B8}
+.code pre{margin:0;padding:18px 20px 22px;font:500 13px/1.75 var(--f-mono);overflow-x:auto;tab-size:2}
+.code .k{color:#8FC2F0}.code .c{color:#6B7A8D}.code .n{color:var(--gold)}.code .s{color:#6FD39B}.code .f{color:#E8EEF7;font-weight:700}
+.code-h{font:700 13px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:clamp(50px,6vw,80px) 0 -4px}
+@media (max-width:900px){.code-band{grid-template-columns:1fr}}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(40px,5vw,64px)}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.skill:hover{--ty:-6px;box-shadow:var(--shadow);border-color:var(--blue-line)}
+.skill .ic{width:54px;height:54px;border-radius:16px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,1.5,.4,1)}
+.skill:hover .ic{transform:rotate(-10deg) scale(1.08)}
+.skill h3{font-size:26px;letter-spacing:-.025em}
+.skill .sub2{font:700 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-top:-8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:9px 14px;border-radius:12px;background:var(--bg-alt);font-weight:600;font-size:14.5px;transition:background .3s,color .3s,transform .35s cubic-bezier(.2,1.5,.4,1)}
+.chips span:hover{background:var(--blue);color:#fff;transform:translateY(-3px) rotate(-2deg)}
+.tools{margin-top:18px;background:var(--blue);color:#fff;border-radius:28px;padding:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
+.tools b{font-size:clamp(20px,2vw,26px);letter-spacing:-.02em}
+.tools .tl{display:flex;flex-wrap:wrap;gap:8px}
+.tools .tl span{font:700 12.5px/1 var(--f-mono);padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+@media (max-width:960px){.skills{grid-template-columns:1fr}}
+
+/* ---------- experience ---------- */
+.exp{background:var(--bg-alt)}
+.zig{position:relative;margin:clamp(56px,7vw,96px) 0 0}
+.zlist{display:grid;gap:clamp(28px,4vw,48px)}
+.zig-line{position:absolute;left:50%;top:26px;bottom:26px;width:3px;margin-left:-1.5px;border-radius:3px;background:var(--blue-line);overflow:hidden}
+.zig-fill{position:absolute;inset:0;background:var(--blue);transform-origin:top;transform:scaleY(var(--p,1))}
+.zz{position:relative;display:grid;grid-template-columns:1fr 72px 1fr;align-items:center}
+.zz .dot{grid-column:2;grid-row:1;justify-self:center;width:56px;height:56px;border-radius:18px;background:#fff;border:2px solid var(--blue);color:var(--blue);display:grid;place-items:center;position:relative;z-index:1;transition:background .3s,color .3s,transform .6s cubic-bezier(.2,1.5,.4,1),opacity .4s}
+.zz:hover .dot,.zz.lit .dot{background:var(--blue);color:#fff;transform:rotate(-8deg) scale(1.06)}
+.zz .dot::after{content:"";position:absolute;inset:-8px;border-radius:24px;border:2px solid var(--blue);opacity:0;transform:scale(.7)}
+.zz.lit .dot::after{animation:litRing 1s cubic-bezier(.16,1,.3,1)}
+@keyframes litRing{0%{opacity:.7;transform:scale(.7)}100%{opacity:0;transform:scale(1.35)}}
+.zz.lit .card{border-color:var(--blue-line);box-shadow:0 24px 40px -30px rgba(15,82,137,.55)}
+.zz.key .dot{background:var(--blue);color:#fff}
+.zz .card{grid-row:1;background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px 28px;min-width:0;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s,opacity .8s cubic-bezier(.16,1,.3,1),translate 1s cubic-bezier(.16,1,.3,1)}
+.zz .card:hover{--ty:-4px;box-shadow:var(--shadow)}
+.zz .yr{grid-row:1;font-size:clamp(40px,5vw,72px);font-weight:800;letter-spacing:-.05em;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--blue-line);white-space:nowrap;transition:opacity .9s cubic-bezier(.16,1,.3,1) .15s,translate 1s cubic-bezier(.16,1,.3,1) .15s,color .5s,-webkit-text-stroke-color .5s}
+.zz:hover .yr,.zz.lit .yr{color:var(--blue-soft);-webkit-text-stroke-color:var(--blue)}
+.zz:nth-child(even) .card{grid-column:1}
+.zz:nth-child(even) .yr{grid-column:3;justify-self:start;padding-left:24px}
+.zz:nth-child(odd) .card{grid-column:3}
+.zz:nth-child(odd) .yr{grid-column:1;justify-self:end;padding-right:24px}
+.zz.key .card{background:var(--blue);border-color:var(--blue);color:#fff}
+.zz.key .card li,.zz.key .card p{color:#DCEAF7}
+.zz.key .when{color:var(--sky)}
+.zz .when{font:700 12px/1.3 var(--f-mono);letter-spacing:.08em;color:var(--blue);text-transform:uppercase}
+.zz h3{font-size:24px;letter-spacing:-.02em;margin:10px 0 10px}
+.zz p{color:var(--ink-2);font-size:16px}
+.zz ul{display:grid;gap:8px}
+.zz li{position:relative;padding-left:20px;color:var(--ink-2);font-size:15.5px}
+.zz li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.55}
+.zz.pre .dot{opacity:0;transform:scale(.3) rotate(-30deg)}
+.zz.pre .card{opacity:0}
+.zz.pre:nth-child(even) .card{translate:-90px 0}
+.zz.pre:nth-child(odd) .card{translate:90px 0}
+.zz.pre .yr{opacity:0;translate:0 30px}
+@media (max-width:860px){
+  .zig-line{left:27px}
+  .zz{grid-template-columns:56px 1fr;gap:0 18px;align-items:start}
+  .zz .dot{grid-column:1}
+  .zz:nth-child(n) .card{grid-column:2}
+  .zz:nth-child(n) .yr{display:none}
+  .zz.pre:nth-child(n) .card{translate:50px 0}
+}
+
+/* ---------- contact ---------- */
+.contact{background:var(--blue);color:#fff;overflow:hidden;isolation:isolate}
+.contact .giant-bg{position:absolute;right:-3%;bottom:-14%;font-size:clamp(180px,30vw,440px);font-weight:800;letter-spacing:-.07em;line-height:.8;color:rgba(255,255,255,.07);z-index:-1;white-space:nowrap;pointer-events:none}
+.contact .eyebrow{color:var(--sky)}
+.c-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,6vw,90px);align-items:end}
+.c-links{display:grid;gap:14px;margin-top:34px}
+.c-links a{display:flex;align-items:center;gap:18px;padding:16px 22px;border-radius:20px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);text-decoration:none;font-size:clamp(17px,2vw,22px);font-weight:700;letter-spacing:-.01em;transition:background .3s,color .3s,transform .45s cubic-bezier(.2,1.5,.4,1);min-width:0}
+.c-links a span.t{min-width:0;overflow-wrap:anywhere}
+.c-links a:hover{background:#fff;color:var(--blue);transform:translateX(8px)}
+.c-links .ic{width:48px;height:48px;border-radius:14px;background:#fff;color:var(--blue);display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+.c-links a:hover .ic{background:var(--blue);color:#fff}
+blockquote.motto{margin:0;font-size:clamp(26px,3.2vw,42px);font-weight:800;line-height:1.15;letter-spacing:-.03em}
+blockquote.motto em{font-style:normal;color:var(--sky)}
+.motto-by{display:block;font:700 13px/1 var(--f-mono);letter-spacing:.1em;color:var(--sky);margin-top:18px;text-transform:uppercase}
+@media (max-width:900px){.c-grid{grid-template-columns:1fr}}
+footer{background:var(--ink);color:#fff;padding-block:30px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer .lg{display:flex;align-items:center;gap:10px;font-weight:800}
+footer .mono-badge{background:var(--blue);color:#fff;width:32px;height:32px;font-size:13px}
+footer a{text-decoration:none;color:#B9C0CB}
+footer a:hover{color:#fff}
+
+/* reveal on scroll (visible by default; script adds .pre only to items below the fold) */
+.rv{transition:opacity .9s cubic-bezier(.16,1,.3,1),translate 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.rv.pre{opacity:0;translate:0 60px}
+.rv.pre.left{translate:-60px 0}
+.rv.pre.right{translate:60px 0}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition:none!important}
+  .rv.pre{opacity:1;translate:none}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+  <symbol id="i-net" viewBox="0 0 24 24"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+  <symbol id="i-term" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-grad" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></symbol>
+</svg>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top-of-page" aria-label="Jiří Pölzer, home"><span class="mono-badge" aria-hidden="true">JP</span><span>Jiří <b>Pölzer</b></span></a>
+    <button class="lang" id="lang" type="button" aria-label="Change language" title="Change language"><span data-l="cs">CS</span><span data-l="en">EN</span></button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <nav class="nav" id="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top-of-page">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="deco" aria-hidden="true">
+    <i style="left:6%;top:18%;--s:54px;--r:-14deg;--t:15s;--dl:-3s;--x:20px;--y:-24px;--o:.22"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-code"/></svg></i>
+    <i class="rg" style="left:44%;top:10%;--s:90px;--t:19s;--dl:-6s;--x:-24px;--y:18px;--o:.14"></i>
+    <i style="left:52%;top:82%;--s:58px;--r:8deg;--t:17s;--dl:-8s;--x:26px;--y:-20px;--o:.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-net"/></svg></i>
+    <i class="sq" style="left:88%;top:74%;--s:64px;--r:24deg;--t:14s;--dl:-2s;--x:-18px;--y:-22px;--o:.16"></i>
+    <i style="left:30%;top:88%;--s:48px;--r:-8deg;--t:16s;--dl:-5s;--x:-16px;--y:-18px;--o:.22"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cpu"/></svg></i>
+    <i style="left:93%;top:14%;--s:46px;--r:12deg;--t:18s;--dl:-9s;--x:-20px;--y:22px;--o:.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-term"/></svg></i>
+    <i style="left:16%;top:64%;--s:44px;--r:-6deg;--t:13s;--dl:-1s;--x:16px;--y:-16px;--o:.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-server"/></svg></i>
+  </div>
+  <svg class="staff" viewBox="0 0 1600 180" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 C300 10 500 90 800 50 S1300 10 1600 50"/>
+    <path d="M0 65 C300 35 500 115 800 75 S1300 35 1600 75"/>
+    <path d="M0 90 C300 60 500 140 800 100 S1300 60 1600 100"/>
+    <path d="M0 115 C300 85 500 165 800 125 S1300 85 1600 125"/>
+    <path d="M0 140 C300 110 500 190 800 150 S1300 110 1600 150"/>
+  </svg>
+
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <span class="eyebrow">Portfolio · Brno</span>
+      <h1 class="giant" id="giant" aria-label="Jiří Pölzer"><span class="line">Jiří</span><span class="line">Pölzer</span></h1>
+      <p class="role">Full-stack developer who <span class="rot" id="rot"><span class="on">builds web apps</span><span>routes PCB traces</span><span>configures VLANs</span><span>tunes FPV drones</span><span>runs Arch Linux</span><span>leads scout camps</span></span></p>
+      <p class="tagline">// Bridging Software, Networks, and Custom Hardware</p>
+      <div class="hero-cta">
+        <a class="btn white" href="#projects">See projects <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="portrait" id="portrait">
+      <div class="back" aria-hidden="true"></div>
+      <div class="frame">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Stylised circuit board with a JP chip in the centre">
+          <defs>
+            <radialGradient id="pg" cx="50%" cy="42%" r="70%"><stop offset="0" stop-color="#1B6AAB"/><stop offset="1" stop-color="#082F50"/></radialGradient>
+          </defs>
+          <rect width="400" height="500" fill="url(#pg)"/>
+          <g class="traces">
+            <path class="trace" d="M0 120 H90 L130 160 H150 V210"/>
+            <path class="trace b" d="M0 180 H60 L100 220 H150"/>
+            <path class="trace" d="M0 340 H80 L120 300 H150 V270"/>
+            <path class="trace b" d="M400 110 H320 L280 150 H250 V210"/>
+            <path class="trace" d="M400 200 H330 L290 240 H250"/>
+            <path class="trace b" d="M400 380 H310 L270 340 H250 V280"/>
+            <path class="trace" d="M200 0 V90 L220 110 V170"/>
+            <path class="trace b" d="M170 500 V420 L190 400 V320"/>
+            <path class="trace" d="M240 500 V440 H300 L330 470 H400"/>
+          </g>
+          <g>
+            <circle class="via" cx="90" cy="120" r="5"/><circle class="via" cx="100" cy="220" r="5" style="animation-delay:-.8s"/>
+            <circle class="via" cx="80" cy="340" r="5" style="animation-delay:-1.4s"/><circle class="via" cx="320" cy="110" r="5" style="animation-delay:-2s"/>
+            <circle class="via" cx="290" cy="240" r="5" style="animation-delay:-.4s"/><circle class="via" cx="310" cy="380" r="5" style="animation-delay:-1.8s"/>
+            <circle class="via" cx="220" cy="110" r="5" style="animation-delay:-1.1s"/><circle class="via" cx="190" cy="400" r="5" style="animation-delay:-2.2s"/>
+          </g>
+          <g>
+            <rect x="140" y="200" width="120" height="120" rx="14" fill="#0B3F6B" stroke="#fff" stroke-width="3"/>
+            <g stroke="#A9D1F5" stroke-width="3" stroke-linecap="round">
+              <path d="M160 200v-14M180 200v-14M200 200v-14M220 200v-14M240 200v-14"/>
+              <path d="M160 320v14M180 320v14M200 320v14M220 320v14M240 320v14"/>
+              <path d="M140 220h-14M140 240h-14M140 260h-14M140 280h-14M140 300h-14"/>
+              <path d="M260 220h14M260 240h14M260 260h14M260 280h14M260 300h14"/>
+            </g>
+            <text x="200" y="272" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="52" fill="#fff" letter-spacing="-2">JP</text>
+            <circle cx="152" cy="212" r="4" fill="#F2C879"/>
+          </g>
+        </svg>
+      </div>
+      <span class="badge b1"><span class="ic"><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-code"/></svg></span>Full-Stack</span>
+      <span class="badge b2"><span class="ic"><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-net"/></svg></span>Networks</span>
+      <span class="badge b3"><span class="ic"><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-cpu"/></svg></span>Hardware</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="rv left">
+        <span class="eyebrow">About me</span>
+        <h2 class="h2">Hi, I'm <em>Jiří.</em></h2>
+      </div>
+      <div class="intro rv right">
+        <p class="lead">I'm an Information Technology student at EDUCAnet Brno with hands-on enterprise experience. I work across software, network infrastructure and embedded hardware.</p>
+        <p>I like building complete solutions end to end: from routing the traces of a custom PCB to deploying a server and designing a responsive interface on top of it.</p>
+        <p>Ten years as a Scout leader taught me how to plan, lead a team and stay calm when things go sideways.</p>
+        <div class="traits"><span>React</span><span>TypeScript</span><span>PHP</span><span>Cisco</span><span>MikroTik</span><span>Linux</span><span>Arduino / ESP32</span><span>PCB design</span><span>FPV</span></div>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div class="fact tilt rv" style="--d:.05s">
+        <span class="k"><span class="pin"></span>Now</span>
+        <div><b>IT student</b><p>EDUCAnet Brno, alongside real client work.</p></div>
+      </div>
+      <div class="fact tilt rv" style="--d:.15s">
+        <span class="k">Leadership</span>
+        <div class="big">10+<small>years</small></div>
+        <p>Active Scout member and youth leader.</p>
+      </div>
+      <div class="fact tilt rv" style="--d:.25s">
+        <span class="k">Range</span>
+        <div class="subj"><span>Software</span><span>Networks</span><span>Hardware</span></div>
+        <p>One person who can ship the app, the network and the board.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec proj-sec" id="projects">
+  <div class="wrap">
+    <div class="web-head rv">
+      <div>
+        <span class="eyebrow">01 · Projects</span>
+        <h2 class="h2">Built, wired <em>and configured.</em></h2>
+      </div>
+      <p class="sub">Web apps, custom boards, drones and production networks. Filter by the kind of work you care about.</p>
+    </div>
+
+    <div class="filters rv" role="group" aria-label="Filter projects">
+      <button class="flt" type="button" data-f="all" aria-pressed="true">All <small>7</small></button>
+      <button class="flt" type="button" data-f="web" aria-pressed="false">Web &amp; Software <small>3</small></button>
+      <button class="flt" type="button" data-f="net" aria-pressed="false">Networks &amp; Servers <small>2</small></button>
+      <button class="flt" type="button" data-f="hw" aria-pressed="false">Hardware &amp; PCB <small>2</small></button>
+    </div>
+
+    <div class="projects" id="grid">
+
+      <!-- Autoškola Master -->
+      <article class="proj rv" data-cat="web">
+        <div class="shot tilt">
+          <div class="bar"><i></i><i></i><i></i><span class="url">autoskola-master / test</span></div>
+          <div class="view v-quiz" id="quiz">
+            <div class="qtop"><span id="qn">Question 1 / 3</span><span class="qbar"><i id="qp"></i></span><span class="qscore" id="qs">0 pts</span></div>
+            <div class="qq" id="qq"></div>
+            <div class="qopts" id="qo"></div>
+          </div>
+        </div>
+        <div class="meta"><h3>Autoškola Master</h3><span class="role-l">Lead Full-Stack Developer</span></div>
+        <p>A gamified web app for driver's licence test preparation with automated scoring, progress tracking and interactive quizzes.</p>
+        <ul class="pts">
+          <li>Interactive test evaluation with state management for instant feedback.</li>
+          <li>Relational schema designed to serve thousands of concurrent quiz queries.</li>
+          <li>Mobile-responsive interface built with Tailwind CSS.</li>
+        </ul>
+        <div class="tags"><span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>PHP</span><span>PostgreSQL / SQL</span></div>
+        <div class="ctas"><a class="lnk" href="#" data-todo title="Link coming soon">Live Demo <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">GitHub <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">UI Screenshots <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      </article>
+
+      <!-- Linearium -->
+      <article class="proj rv" data-cat="web" style="--d:.08s">
+        <div class="shot tilt">
+          <div class="bar"><i></i><i></i><i></i><span class="url">linearium / leaderboard</span></div>
+          <div class="view v-lin">
+            <div class="lhead"><b>Lineárium</b><span class="lvl">Level 4</span></div>
+            <div class="xp" aria-hidden="true"><i></i></div>
+            <div class="lb" aria-hidden="true">
+              <div class="lrow"><span>1</span><span>Team A</span><span class="bar2"><i style="--w:92%;--d:.1s"></i></span><span>920</span></div>
+              <div class="lrow me"><span>2</span><span>You</span><span class="bar2"><i style="--w:78%;--d:.25s"></i></span><span>780</span></div>
+              <div class="lrow"><span>3</span><span>Team C</span><span class="bar2"><i style="--w:61%;--d:.4s"></i></span><span>610</span></div>
+              <div class="lrow"><span>4</span><span>Team D</span><span class="bar2"><i style="--w:44%;--d:.55s"></i></span><span>440</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="meta"><h3>Lineárium</h3><span class="role-l">404 Founders Hackathon</span></div>
+        <p>A gamified educational app, built under a strict time limit as a full-stack developer and team contributor.</p>
+        <ul class="pts">
+          <li>Co-designed and deployed a working MVP within 24 to 48 hours.</li>
+          <li>Built dynamic UI components and REST API endpoints for user progression and leaderboards.</li>
+          <li>Debugged live and collaborated in an agile team under pressure.</li>
+        </ul>
+        <div class="tags"><span>React</span><span>Next.js</span><span>Node.js</span><span>TypeScript</span><span>PostgreSQL</span></div>
+        <div class="ctas"><a class="lnk" href="#" data-todo title="Link coming soon">Pitch / Demo <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">Source Code <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">Certificate <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      </article>
+
+      <!-- Pill sken -->
+      <article class="proj rv" data-cat="web">
+        <div class="shot tilt">
+          <div class="bar"><i></i><i></i><i></i><span class="url">pill sken · rakathon 2026</span></div>
+          <div class="view v-pill" aria-hidden="true">
+            <div class="pi box" style="--x:24cqw;--y:34cqh;--w:26cqw;--r:9deg;--c:#2E9E5B;--d:0s"><i></i><b>ACC LONG</b><span>600 mg</span></div>
+            <div class="pi box" style="--x:76cqw;--y:32cqh;--w:24cqw;--r:-12deg;--c:#F08A1C;--d:.08s"><i></i><b>IBALGIN</b><span>400 mg</span></div>
+            <div class="pi paper" style="--x:86cqw;--y:70cqh;--w:15cqw;--r:10deg;--d:.16s"><i style="--l:90%"></i><i style="--l:70%"></i><i style="--l:84%"></i><i style="--l:50%"></i></div>
+            <div class="pi box" style="--x:50cqw;--y:52cqh;--w:34cqw;--r:-5deg;--c:#D21F2C;--fs:4.6cqw;--d:.24s"><i></i><b>PARALEN</b><span>500 mg</span></div>
+            <div class="pi note" style="--x:22cqw;--y:74cqh;--w:24cqw;--r:-6deg;--d:.32s">Paralen<br>½ tab in the morning</div>
+            <div class="pi note" style="--x:68cqw;--y:76cqh;--w:18cqw;--r:7deg;--d:.4s">ACC 1‑0‑1</div>
+            <div class="vf"><i></i><i></i><i></i><i></i></div>
+            <span class="sw"></span>
+            <div class="pword"><b>Pill sken</b><span>Snap the medicine. The doctor sees it in seconds.</span></div>
+            <span class="flash"></span>
+          </div>
+        </div>
+        <div class="meta"><h3>Pill sken</h3><span class="role-l">Rakathon 2026</span></div>
+        <p>An app that turns a photo of a medicine box or a handwritten note into a clear medication record for the doctor.</p>
+        <ul class="pts">
+          <li>Photo capture of medicine boxes and dosage notes.</li>
+          <li>A tidy patient record the doctor can read in seconds.</li>
+          <li>App interface design and a presentation website.</li>
+        </ul>
+        <div class="tags"><span>App design</span><span>UI</span><span>Web</span></div>
+        <div class="ctas"><a class="lnk" href="#" data-todo title="Link coming soon">View project <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      </article>
+
+      <!-- PCB -->
+      <article class="proj rv" data-cat="hw" style="--d:.08s">
+        <div class="shot tilt">
+          <div class="bar"><i></i><i></i><i></i><span class="url">board-v1.kicad_pcb</span></div>
+          <div class="view v-pcb">
+            <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="PCB layout with a microcontroller, traces and pads">
+              <rect width="600" height="340" fill="#0B3F6B"/>
+              <g fill="none" stroke="#14598F" stroke-width="1"><path d="M0 40H600M0 80H600M0 120H600M0 160H600M0 200H600M0 240H600M0 280H600M0 320H600"/><path d="M40 0V340M80 0V340M120 0V340M160 0V340M200 0V340M240 0V340M280 0V340M320 0V340M360 0V340M400 0V340M440 0V340M480 0V340M520 0V340M560 0V340"/></g>
+              <g>
+                <path class="trace" d="M60 70 H150 L190 110 H230"/>
+                <path class="trace b" d="M60 110 H120 L160 150 H230"/>
+                <path class="trace" d="M60 170 H110 L150 190 H230"/>
+                <path class="trace b" d="M60 230 H130 L170 230 H230"/>
+                <path class="trace" d="M60 270 H150 L190 250 H230"/>
+                <path class="trace b" d="M370 110 H430 L470 70 H550"/>
+                <path class="trace" d="M370 150 H450 L490 150 H550"/>
+                <path class="trace b" d="M370 190 H440 L480 230 H550"/>
+                <path class="trace" d="M370 230 H420 L460 270 H550"/>
+                <path class="trace b" d="M300 40 V80"/><path class="trace" d="M300 300 V260 "/>
+              </g>
+              <g fill="#F2C879"><circle cx="60" cy="70" r="7"/><circle cx="60" cy="110" r="7"/><circle cx="60" cy="170" r="7"/><circle cx="60" cy="230" r="7"/><circle cx="60" cy="270" r="7"/><circle cx="550" cy="70" r="7"/><circle cx="550" cy="150" r="7"/><circle cx="550" cy="230" r="7"/><circle cx="550" cy="270" r="7"/></g>
+              <g><circle class="via" cx="190" cy="110" r="5"/><circle class="via" cx="160" cy="150" r="5" style="animation-delay:-1s"/><circle class="via" cx="430" cy="110" r="5" style="animation-delay:-1.6s"/><circle class="via" cx="440" cy="190" r="5" style="animation-delay:-.5s"/></g>
+              <rect x="230" y="80" width="140" height="180" rx="10" fill="#082F50" stroke="#fff" stroke-width="2.5"/>
+              <rect x="258" y="100" width="84" height="46" rx="5" fill="#1B6AAB" stroke="#A9D1F5" stroke-width="1.5"/>
+              <text x="300" y="128" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700" font-size="14" fill="#fff">ESP32</text>
+              <g stroke="#A9D1F5" stroke-width="3" stroke-linecap="round"><path d="M240 110h-10M240 150h-10M240 190h-10M240 230h-10M360 110h10M360 150h10M360 190h10M360 230h10"/></g>
+              <g font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#A9D1F5"><text x="258" y="190">I2C · SPI · UART</text><text x="258" y="212">3V3 · GND</text></g>
+            </svg>
+          </div>
+        </div>
+        <div class="meta"><h3>Custom PCB Design &amp; Microcontrollers</h3><span class="role-l">Embedded</span></div>
+        <p>Custom circuit design, prototyping and firmware for embedded control systems, from schematic to a soldered board.</p>
+        <ul class="pts">
+          <li>Breakout boards, sensor modules and automation triggers.</li>
+          <li>Firmware in C++ for sensor readings and I2C, SPI and UART communication.</li>
+          <li>2D and 3D trace layouts shown next to photos of the assembled boards.</li>
+        </ul>
+        <div class="tags"><span>Autodesk Fusion (EDA)</span><span>KiCad</span><span>Arduino</span><span>ESP32</span><span>Soldering</span></div>
+        <div class="ctas"><a class="lnk" href="#" data-todo title="Link coming soon">Visual Gallery <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">Firmware Source <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      </article>
+
+      <!-- CAD / FPV -->
+      <article class="proj rv" data-cat="hw" style="--d:.08s">
+        <div class="shot tilt">
+          <div class="bar"><i></i><i></i><i></i><span class="url">enclosure.f3d · fpv-build</span></div>
+          <div class="view v-fpv">
+            <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Wireframe enclosure next to a drone with spinning propellers">
+              <g transform="translate(40 60)">
+                <path class="wire" d="M40 90 L110 50 L190 90 L190 180 L110 220 L40 180 Z"/>
+                <path class="wire" d="M40 90 L110 130 L190 90 M110 130 V220"/>
+                <path class="wire" d="M40 90 V180" style="animation-delay:-2s"/>
+                <circle cx="110" cy="88" r="9" fill="none" stroke="#F2C879" stroke-width="1.6"/>
+                <text x="40" y="250" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#A9D1F5">ENCLOSURE · CAD → PRINT</text>
+              </g>
+              <g class="hover-bob" transform="translate(430 170)">
+                <g stroke="#fff" stroke-width="7" stroke-linecap="round"><path d="M-62 -62 L62 62"/><path d="M62 -62 L-62 62"/></g>
+                <rect x="-26" y="-34" width="52" height="68" rx="12" fill="#0F5289" stroke="#fff" stroke-width="3"/>
+                <rect x="-14" y="-24" width="28" height="12" rx="4" fill="#A9D1F5"/>
+                <circle cx="0" cy="12" r="7" fill="#F2C879"/>
+                <g fill="#082F50" stroke="#fff" stroke-width="3"><circle cx="-62" cy="-62" r="12"/><circle cx="62" cy="-62" r="12"/><circle cx="-62" cy="62" r="12"/><circle cx="62" cy="62" r="12"/></g>
+                <g fill="rgba(169,209,245,.55)">
+                  <ellipse class="prop" cx="-62" cy="-62" rx="46" ry="7"/><ellipse class="prop r" cx="62" cy="-62" rx="46" ry="7"/>
+                  <ellipse class="prop r" cx="-62" cy="62" rx="46" ry="7"/><ellipse class="prop" cx="62" cy="62" rx="46" ry="7"/>
+                </g>
+              </g>
+              <text x="350" y="310" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#A9D1F5">FPV · ESC + FC + CAM + RX</text>
+            </svg>
+          </div>
+        </div>
+        <div class="meta"><h3>CAD, 3D Printing &amp; FPV Engineering</h3><span class="role-l">Design to production</span></div>
+        <p>A complete design-to-production workflow for mechanical parts and custom FPV drone systems.</p>
+        <ul class="pts">
+          <li>Enclosures and mechanical adapters modelled in Fusion and printed in-house.</li>
+          <li>FPV builds with integrated ESC, flight controller, camera and receiver.</li>
+          <li>Custom power distribution and Betaflight tuning.</li>
+        </ul>
+        <div class="tags"><span>Autodesk Fusion (CAD)</span><span>PrusaSlicer</span><span>3D Printing</span><span>Betaflight</span><span>FPV Hardware</span></div>
+        <div class="ctas"><a class="lnk" href="#" data-todo title="Link coming soon">3D Models <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">Build Log <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      </article>
+
+      <!-- Network -->
+      <article class="proj rv" data-cat="net">
+        <div class="shot tilt">
+          <div class="bar"><i></i><i></i><i></i><span class="url">topology · vlan-segmentation</span></div>
+          <div class="view v-net">
+            <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Network topology with a router, a switch, three VLANs and a RADIUS server">
+              <rect width="600" height="340" fill="#1C2430"/>
+              <g stroke="#3A4A60" stroke-width="2.5" fill="none">
+                <path id="p1" d="M300 52 V108"/>
+                <path id="p2" d="M300 148 V190 M300 190 H110 V240"/>
+                <path id="p3" d="M300 190 V240"/>
+                <path id="p4" d="M300 190 H490 V240"/>
+                <path id="p5" d="M340 128 H470 V72"/>
+              </g>
+              <g font-family="JetBrains Mono,monospace" font-weight="700" font-size="12">
+                <rect x="250" y="12" width="100" height="40" rx="12" fill="#0F5289"/><text x="300" y="37" text-anchor="middle" fill="#fff">Internet</text>
+                <rect x="240" y="108" width="120" height="40" rx="12" fill="#fff"/><text x="300" y="133" text-anchor="middle" fill="#0F5289">MikroTik</text>
+                <rect x="410" y="32" width="120" height="40" rx="12" fill="#2A3548" stroke="#F2C879" stroke-width="1.5"/><text x="470" y="57" text-anchor="middle" fill="#F2C879">RADIUS</text>
+                <rect x="50" y="240" width="120" height="44" rx="12" fill="#2A3548" stroke="#6FD39B" stroke-width="1.5"/><text x="110" y="260" text-anchor="middle" fill="#6FD39B">VLAN 10</text><text x="110" y="276" text-anchor="middle" fill="#9AA7B8" font-size="10">Staff</text>
+                <rect x="240" y="240" width="120" height="44" rx="12" fill="#2A3548" stroke="#A9D1F5" stroke-width="1.5"/><text x="300" y="260" text-anchor="middle" fill="#A9D1F5">VLAN 20</text><text x="300" y="276" text-anchor="middle" fill="#9AA7B8" font-size="10">Servers</text>
+                <rect x="430" y="240" width="120" height="44" rx="12" fill="#2A3548" stroke="#F58A7A" stroke-width="1.5"/><text x="490" y="260" text-anchor="middle" fill="#F58A7A">VLAN 30</text><text x="490" y="276" text-anchor="middle" fill="#9AA7B8" font-size="10">Guests</text>
+                <text x="372" y="172" fill="#9AA7B8" font-size="10">Cisco IOS switch · trunk</text>
+              </g>
+              <circle cx="300" cy="170" r="14" fill="#0F5289" stroke="#fff" stroke-width="2"/>
+              <circle r="4.5" fill="#fff"><animateMotion dur="2.4s" repeatCount="indefinite" path="M300 52 V108"/></circle>
+              <circle r="4.5" fill="#6FD39B"><animateMotion dur="3s" repeatCount="indefinite" begin="-.6s" path="M300 148 V190 H110 V240"/></circle>
+              <circle r="4.5" fill="#A9D1F5"><animateMotion dur="2s" repeatCount="indefinite" begin="-1s" path="M300 148 V240"/></circle>
+              <circle r="4.5" fill="#F58A7A"><animateMotion dur="3.2s" repeatCount="indefinite" begin="-2s" path="M300 148 V190 H490 V240"/></circle>
+              <circle r="4.5" fill="#F2C879"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.2s" path="M340 128 H470 V72"/></circle>
+            </svg>
+          </div>
+        </div>
+        <div class="meta"><h3>Enterprise Network Administration</h3><span class="role-l">Networks &amp; infrastructure</span></div>
+        <p>Practical deployment of commercial networks, with segmentation and authenticated access.</p>
+        <ul class="pts">
+          <li>VLAN segmentation, trunk links and RADIUS authentication workflows.</li>
+          <li>Structured cabling to T568B, device mounting and switch configuration for commercial clients.</li>
+          <li>Topology diagrams drawn in Cisco Packet Tracer or Draw.io.</li>
+        </ul>
+        <div class="tags"><span>Cisco IOS</span><span>MikroTik RouterOS</span><span>VLANs</span><span>RADIUS</span><span>T568B</span></div>
+        <div class="ctas"><a class="lnk" href="#" data-todo title="Link coming soon">Topology Diagrams <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">Case Study <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      </article>
+
+      <!-- Linux -->
+      <article class="proj rv" data-cat="net" style="--d:.08s">
+        <div class="shot tilt">
+          <div class="bar"><i></i><i></i><i></i><span class="url">~/dotfiles · zsh</span></div>
+          <div class="view v-term">
+            <div class="tbody" id="term" aria-label="Terminal session with Docker and Ollama commands" role="img"></div>
+          </div>
+        </div>
+        <div class="meta"><h3>Linux Administration &amp; AI Workloads</h3><span class="role-l">Systems</span></div>
+        <p>A daily-driver Linux setup used for self-hosted services and local language models.</p>
+        <ul class="pts">
+          <li>Docker containers, reverse proxies and local service hosting.</li>
+          <li>Local LLMs through Ollama or LM Studio, wired into development pipelines.</li>
+          <li>A custom Hyprland / HyDE desktop with dotfiles tuned for command-line speed.</li>
+        </ul>
+        <div class="tags"><span>Arch Linux</span><span>CachyOS</span><span>Docker</span><span>Hyprland</span><span>Zsh / Bash</span><span>Ollama</span></div>
+        <div class="ctas"><a class="lnk" href="#" data-todo title="Link coming soon">Dotfiles <svg class="i"><use href="#i-arrow"/></svg></a><a class="lnk" href="#" data-todo title="Link coming soon">Setup Notes <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      </article>
+    </div>
+
+    <h3 class="code-h rv" style="font-size:13px">Under the hood · example snippets</h3>
+    <div class="code-band">
+      <div class="code rv">
+        <div class="tbar"><i></i><i></i><i></i><span>sensor.ino · I2C temperature read</span></div>
+<pre><span class="k">#include</span> <span class="s">&lt;Wire.h&gt;</span>
+
+<span class="k">const</span> <span class="k">uint8_t</span> SENSOR_ADDR = <span class="n">0x48</span>;  <span class="c">// TMP102 on the I2C bus</span>
+
+<span class="k">float</span> <span class="f">readTemperature</span>() {
+  Wire.<span class="f">beginTransmission</span>(SENSOR_ADDR);
+  Wire.<span class="f">write</span>(<span class="n">0x00</span>);                 <span class="c">// temperature register</span>
+  Wire.<span class="f">endTransmission</span>();
+  Wire.<span class="f">requestFrom</span>(SENSOR_ADDR, (<span class="k">uint8_t</span>)<span class="n">2</span>);
+
+  <span class="k">int16_t</span> raw = ((Wire.<span class="f">read</span>() &lt;&lt; <span class="n">8</span>) | Wire.<span class="f">read</span>()) &gt;&gt; <span class="n">4</span>;
+  <span class="k">if</span> (raw &amp; <span class="n">0x800</span>) raw |= <span class="n">0xF000</span>;  <span class="c">// sign-extend 12-bit value</span>
+  <span class="k">return</span> raw * <span class="n">0.0625f</span>;
+}
+
+<span class="k">void</span> <span class="f">setup</span>() { Serial.<span class="f">begin</span>(<span class="n">115200</span>); Wire.<span class="f">begin</span>(); }
+<span class="k">void</span> <span class="f">loop</span>()  { Serial.<span class="f">println</span>(<span class="f">readTemperature</span>()); <span class="f">delay</span>(<span class="n">500</span>); }</pre>
+      </div>
+      <div class="code rv" style="--d:.1s">
+        <div class="tbar"><i></i><i></i><i></i><span>switch.cfg · Cisco IOS trunk</span></div>
+<pre><span class="k">vlan</span> <span class="n">10</span>
+ <span class="k">name</span> STAFF
+<span class="k">vlan</span> <span class="n">20</span>
+ <span class="k">name</span> SERVERS
+<span class="k">vlan</span> <span class="n">30</span>
+ <span class="k">name</span> GUESTS
+<span class="c">!</span>
+<span class="k">interface</span> GigabitEthernet0/1
+ <span class="k">description</span> <span class="s">Uplink to MikroTik</span>
+ <span class="k">switchport mode</span> trunk
+ <span class="k">switchport trunk allowed vlan</span> <span class="n">10,20,30</span>
+<span class="c">!</span>
+<span class="k">radius server</span> AUTH1
+ <span class="k">address ipv4</span> <span class="n">10.0.20.5</span> <span class="k">auth-port</span> <span class="n">1812</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="wrap">
+    <div class="web-head rv">
+      <div>
+        <span class="eyebrow">02 · Technical competencies</span>
+        <h2 class="h2">One stack, <em>three layers.</em></h2>
+      </div>
+      <p class="sub">From the browser down to the cable and the circuit board.</p>
+    </div>
+    <div class="skills">
+      <div class="skill tilt rv" style="--d:.05s">
+        <span class="ic"><svg class="i" width="26" height="26" aria-hidden="true"><use href="#i-code"/></svg></span>
+        <h3>Software Dev</h3><span class="sub2">Applications &amp; APIs</span>
+        <div class="chips"><span>Python</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span><span>PHP</span><span>SQL</span><span>PostgreSQL</span><span>Tailwind CSS</span></div>
+      </div>
+      <div class="skill tilt rv" style="--d:.15s">
+        <span class="ic"><svg class="i" width="26" height="26" aria-hidden="true"><use href="#i-net"/></svg></span>
+        <h3>Infrastructure</h3><span class="sub2">Networks &amp; servers</span>
+        <div class="chips"><span>Cisco IOS</span><span>MikroTik</span><span>Linux</span><span>Docker</span><span>RADIUS</span><span>VLANs</span><span>Zsh / Bash</span><span>Ollama</span></div>
+      </div>
+      <div class="skill tilt rv" style="--d:.25s">
+        <span class="ic"><svg class="i" width="26" height="26" aria-hidden="true"><use href="#i-cpu"/></svg></span>
+        <h3>Hardware Design</h3><span class="sub2">Boards, parts &amp; drones</span>
+        <div class="chips"><span>Arduino</span><span>ESP32</span><span>PCB design</span><span>KiCad</span><span>Autodesk Fusion</span><span>CAD</span><span>3D printing</span><span>Betaflight</span></div>
+      </div>
+    </div>
+    <div class="tools rv">
+      <b>Protocols I work with</b>
+      <div class="tl"><span>I2C</span><span>SPI</span><span>UART</span><span>802.1Q</span><span>RADIUS</span><span>REST</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec exp" id="experience">
+  <div class="wrap">
+    <div class="web-head rv">
+      <div>
+        <span class="eyebrow">03 · Experience &amp; leadership</span>
+        <h2 class="h2">Work that <em>taught me</em> the rest.</h2>
+      </div>
+      <p class="sub">Client installations, a decade of leading young people, and an IT education.</p>
+    </div>
+
+    <div class="zig" id="zig">
+      <div class="zig-line" aria-hidden="true"><div class="zig-fill" id="zigFill"></div></div>
+      <ul class="zlist">
+        <li class="zz">
+          <span class="dot"><svg class="i" aria-hidden="true"><use href="#i-compass"/></svg></span>
+          <span class="yr">10+ yrs</span>
+          <div class="card">
+            <span class="when">Scout · Youth leader</span>
+            <h3>Scout Youth Leader</h3>
+            <ul>
+              <li>Led weekly activities and summer camps for youth groups, managing logistics, budgeting and safety.</li>
+              <li>Built team leadership, crisis management, clear communication and conflict resolution skills.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="zz key">
+          <span class="dot"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+          <span class="yr">2021</span>
+          <div class="card">
+            <span class="when">2021 – Present</span>
+            <h3>IT Support &amp; Network Installation Specialist</h3>
+            <ul>
+              <li>Managed hardware installations, corporate network deployments and troubleshooting for business clients.</li>
+              <li>Ran diagnostic maintenance on workstations, network hardware and peripherals.</li>
+              <li>Gave technical consultation and fast incident resolution for non-technical users.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="zz">
+          <span class="dot"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg></span>
+          <span class="yr">48 h</span>
+          <div class="card">
+            <span class="when">404 Founders Hackathon</span>
+            <h3>Lineárium MVP</h3>
+            <p>Shipped a gamified learning platform in a 24 to 48 hour window, working as a full-stack developer in a small team.</p>
+          </div>
+        </li>
+        <li class="zz">
+          <span class="dot"><svg class="i" aria-hidden="true"><use href="#i-grad"/></svg></span>
+          <span class="yr">Now</span>
+          <div class="card">
+            <span class="when">Currently</span>
+            <h3>Information Technology student</h3>
+            <p>EDUCAnet Brno. Studying the theory while applying it in client work, side projects and my own lab.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="giant-bg" aria-hidden="true">JP</div>
+  <div class="wrap">
+    <div class="c-grid">
+      <div class="rv left">
+        <span class="eyebrow">Contact</span>
+        <h2 class="h2">Let's build <em style="color:var(--sky)">something.</em></h2>
+        <!-- TODO: replace the four placeholder links below with your real profiles -->
+        <div class="c-links">
+          <a href="https://github.com/" target="_blank" rel="noopener"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-gh"/></svg></span><span class="t">GitHub · github.com/your-handle</span></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg></span><span class="t">LinkedIn · /in/your-name</span></a>
+          <a href="mailto:your.email@example.com"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span><span class="t">your.email@example.com</span></a>
+          <a href="#" data-todo title="Link coming soon"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg></span><span class="t">Resume (PDF)</span></a>
+        </div>
+      </div>
+      <div class="rv right">
+        <blockquote class="motto">Bridging <em>software, networks</em> and custom hardware.<span class="motto-by">Jiří Pölzer · Brno</span></blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="lg"><span class="mono-badge" aria-hidden="true">JP</span>Jiří Pölzer</span>
+    <span>Full-Stack Developer &amp; Network / Hardware Specialist</span>
+    <a href="#top-of-page">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* placeholder links do nothing */
+  $$('[data-todo]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault()})});
+
+  /* giant name: per-letter wave */
+  var giant=$('#giant'),idx=0;
+  if(giant){
+    $$('.line',giant).forEach(function(l){
+      var t=l.textContent;l.textContent='';l.setAttribute('aria-hidden','true');
+      t.split('').forEach(function(c){
+        var o=document.createElement('span');o.className='ch';o.style.setProperty('--i',idx);
+        var i=document.createElement('span');i.className='lift';i.style.setProperty('--i',idx);i.textContent=c;
+        o.appendChild(i);l.appendChild(o);idx++;
+      });
+    });
+  }
+
+  /* rotating role words */
+  var words=$$('#rot span'),w=0;
+  if(words.length&&!reduce){
+    setInterval(function(){
+      var cur=words[w];cur.classList.remove('on');cur.classList.add('out');
+      w=(w+1)%words.length;
+      var nx=words[w];nx.classList.remove('out');
+      setTimeout(function(){nx.classList.add('on')},40);
+      setTimeout(function(){cur.classList.remove('out')},800);
+    },2300);
+  }
+
+  /* top bar */
+  var top=$('#top'),prog=$('#progress'),lastY=0,nav=$('#nav'),burger=$('#burger');
+  function onScroll(){
+    var y=window.scrollY||0,h=document.documentElement.scrollHeight-innerHeight;
+    prog.style.transform='scaleX('+(h>0?y/h:0)+')';
+    top.classList.toggle('solid',y>60);
+    top.classList.toggle('hide',y>lastY&&y>400&&!nav.classList.contains('open'));
+    lastY=y;
+    spy();zigUpdate();
+  }
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  $$('a',nav).forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')})});
+  var secs=['about','projects','skills','experience'].map(function(id){return document.getElementById(id)});
+  function spy(){
+    var y=(window.scrollY||0)+140,cur=null;
+    secs.forEach(function(s){if(s&&s.offsetTop<=y)cur=s.id});
+    $$('a',nav).forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
+  }
+
+  /* reveal on scroll: hide only what is below the fold, then show on entry */
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}})},{threshold:.08});
+    $$('.rv,.zz').forEach(function(el){
+      if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}
+    });
+  }
+
+  /* timeline progress + lit dots */
+  var zig=$('#zig'),zf=$('#zigFill'),zz=$$('.zz');
+  function zigUpdate(){
+    if(!zig)return;
+    var r=zig.getBoundingClientRect(),mid=innerHeight*.6;
+    var p=Math.max(0,Math.min(1,(mid-r.top)/r.height));
+    zf.style.setProperty('--p',p);
+    zz.forEach(function(el){var b=el.getBoundingClientRect();el.classList.toggle('lit',b.top+b.height/2<mid)});
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+
+  /* card tilt */
+  if(!reduce&&matchMedia('(hover:hover)').matches){
+    $$('.tilt').forEach(function(el){
+      el.addEventListener('mousemove',function(e){
+        var b=el.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
+        el.classList.add('hot');el.style.setProperty('--ry',(x*5).toFixed(2)+'deg');el.style.setProperty('--rx',(-y*5).toFixed(2)+'deg');
+      });
+      el.addEventListener('mouseleave',function(){el.classList.remove('hot');el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg')});
+    });
+  }
+
+  /* project filter */
+  var fb=$$('.flt'),cards=$$('#grid .proj');
+  fb.forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    fb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    cards.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-cat')===f);c.classList.remove('pre')});
+  })});
+
+  /* quiz preview */
+  var LANG=(function(){
+    try{var s=localStorage.getItem('lang');if(s==='cs'||s==='en')return s}catch(e){}
+    var l=(navigator.languages&&navigator.languages[0])||navigator.language||'en';
+    return /^cs\b/i.test(l)?'cs':'en';
+  })();
+  var QD={
+    en:[
+      {q:'What is the general speed limit inside a built-up area in the Czech Republic?',o:['30 km/h','50 km/h','70 km/h'],a:1},
+      {q:'A traffic light shows steady amber. What should you do?',o:['Speed up to cross','Stop if you can do so safely','Sound the horn'],a:1},
+      {q:'Who must wear a seat belt in a car that has them fitted?',o:['Only the driver','Front seats only','All occupants'],a:2}
+    ],
+    cs:[
+      {q:'Jaká je nejvyšší dovolená rychlost v obci v České republice?',o:['30 km/h','50 km/h','70 km/h'],a:1},
+      {q:'Na semaforu svítí oranžová. Co uděláte?',o:['Zrychlím a projedu','Zastavím, pokud to lze bezpečně','Zatroubím'],a:1},
+      {q:'Kdo musí být připoután, má-li vozidlo bezpečnostní pásy?',o:['Pouze řidič','Pouze přední sedadla','Všichni přepravovaní'],a:2}
+    ]
+  },QL={en:['Question',' pts'],cs:['Otázka',' b.']};
+  var Q=QD[LANG],qi=0,pts=0,locked=false,timer=null;
+  var qq=$('#qq'),qo=$('#qo'),qn=$('#qn'),qp=$('#qp'),qs=$('#qs');
+  function showQ(){
+    var d=Q[qi];locked=false;qq.textContent=d.q;qo.textContent='';
+    qs.textContent=pts+QL[LANG][1];
+    qn.textContent=QL[LANG][0]+' '+(qi+1)+' / '+Q.length;qp.style.width=((qi+1)/Q.length*100)+'%';
+    d.o.forEach(function(t,i){
+      var b=document.createElement('button');b.type='button';b.className='qo';
+      b.innerHTML='<b>'+'ABC'[i]+'</b><span></span>';b.lastChild.textContent=t;
+      b.addEventListener('click',function(){pick(i,true)});qo.appendChild(b);
+    });
+    clearTimeout(timer);timer=setTimeout(function(){pick(Q[qi].a,false)},3200);
+  }
+  function pick(i,user){
+    if(locked)return;locked=true;clearTimeout(timer);
+    var d=Q[qi],bs=$$('.qo',qo);
+    bs[d.a].classList.add('ok');
+    if(i!==d.a)bs[i].classList.add('no');else if(user)pts+=10;
+    if(user&&i===d.a)qs.textContent=pts+QL[LANG][1];
+    timer=setTimeout(function(){qi=(qi+1)%Q.length;if(qi===0){pts=0}showQ()},1800);
+  }
+  showQ();
+
+  /* terminal preview */
+  var term=$('#term');
+  var script=[
+    ['p','$ ','docker compose up -d'],
+    ['g','','[+] Running 3/3  ✔ proxy  ✔ app  ✔ db'],
+    ['p','$ ','ollama run llama3'],
+    ['y','','>>> model loaded locally, 0 bytes left the machine'],
+    ['p','$ ','hyprctl reload'],
+    ['g','','ok']
+  ];
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function runTerm(){
+    var html='',li=0,ci=0;
+    function paint(extra){term.innerHTML=html+(extra||'')+'<span class="caret"></span>'}
+    function step(){
+      if(li>=script.length){setTimeout(function(){runTerm()},3200);return}
+      var L=script[li];
+      if(L[0]==='p'){
+        if(ci<L[2].length){ci++;paint('<span class="p">'+esc(L[1])+'</span>'+esc(L[2].slice(0,ci)));setTimeout(step,reduce?0:55)}
+        else{html+='<span class="p">'+esc(L[1])+'</span>'+esc(L[2])+'\n';li++;ci=0;paint();setTimeout(step,420)}
+      }else{html+='<span class="'+L[0]+'">'+esc(L[2])+'</span>\n';li++;paint();setTimeout(step,520)}
+    }
+    paint();step();
+  }
+  if(term){if(reduce){term.innerHTML=script.map(function(l){return '<span class="'+l[0]+'">'+esc(l[1]+l[2])+'</span>'}).join('\n')}else runTerm()}
+
+  /* ---------- language (auto from browser, switchable) ---------- */
+  var CS={
+    'About':'O mně','Projects':'Projekty','Skills':'Dovednosti','Experience':'Zkušenosti','Contact':'Kontakt',
+    'Portfolio · Brno':'Portfolio · Brno','Full-stack developer who':'Full-stack vývojář, který',
+    '// Bridging Software, Networks, and Custom Hardware':'// Propojuji software, sítě a vlastní hardware',
+    'See projects':'Zobrazit projekty','Get in touch':'Napsat mi','Networks':'Sítě',
+    'About me':'O mně',"Hi, I'm":'Ahoj, jsem',
+    "I'm an Information Technology student at EDUCAnet Brno with hands-on enterprise experience. I work across software, network infrastructure and embedded hardware.":'Jsem student informačních technologií na EDUCAnet Brno s praktickými zkušenostmi z firemního prostředí. Pohybuji se napříč softwarem, síťovou infrastrukturou a vestavěným hardwarem.',
+    'I like building complete solutions end to end: from routing the traces of a custom PCB to deploying a server and designing a responsive interface on top of it.':'Rád stavím kompletní řešení od začátku do konce: od vedení spojů na vlastním plošném spoji přes nasazení serveru až po responzivní rozhraní nad ním.',
+    'Ten years as a Scout leader taught me how to plan, lead a team and stay calm when things go sideways.':'Deset let u skautů mě naučilo plánovat, vést tým a zachovat klid, když se věci pokazí.',
+    'Arduino / ESP32':'Arduino / ESP32','PCB design':'Návrh PCB','Now':'Nyní','IT student':'Student IT',
+    'EDUCAnet Brno, alongside real client work.':'EDUCAnet Brno, vedle práce pro skutečné klienty.',
+    'Leadership':'Vedení lidí','years':'let','Active Scout member and youth leader.':'Aktivní skaut a vedoucí dětských oddílů.',
+    'Range':'Záběr','One person who can ship the app, the network and the board.':'Jeden člověk, který dodá aplikaci, síť i desku.',
+    '01 · Projects':'01 · Projekty','Built, wired':'Postaveno, zapojeno','and configured.':'a nakonfigurováno.',
+    'Web apps, custom boards, drones and production networks. Filter by the kind of work you care about.':'Webové aplikace, vlastní desky, drony a produkční sítě. Vyberte si druh práce, který vás zajímá.',
+    'All':'Vše','Web & Software':'Web a software','Networks & Servers':'Sítě a servery','Hardware & PCB':'Hardware a PCB',
+    'Lead Full-Stack Developer':'Hlavní full-stack vývojář',
+    "A gamified web app for driver's licence test preparation with automated scoring, progress tracking and interactive quizzes.":'Gamifikovaná webová aplikace na přípravu k testům z autoškoly s automatickým hodnocením, sledováním pokroku a interaktivními kvízy.',
+    'Interactive test evaluation with state management for instant feedback.':'Interaktivní vyhodnocení testů se správou stavu pro okamžitou zpětnou vazbu.',
+    'Relational schema designed to serve thousands of concurrent quiz queries.':'Relační schéma navržené pro tisíce souběžných dotazů na kvízy.',
+    'Mobile-responsive interface built with Tailwind CSS.':'Responzivní rozhraní pro mobily postavené na Tailwind CSS.',
+    'Live Demo':'Živá ukázka','UI Screenshots':'Snímky rozhraní',
+    'Level 4':'Úroveň 4','Team A':'Tým A','You':'Ty','Team C':'Tým C','Team D':'Tým D',
+    '404 Founders Hackathon':'Hackathon 404 Founders',
+    'A gamified educational app, built under a strict time limit as a full-stack developer and team contributor.':'Gamifikovaná vzdělávací aplikace vytvořená v přísném časovém limitu jako full-stack vývojář a člen týmu.',
+    'Co-designed and deployed a working MVP within 24 to 48 hours.':'Společně jsme navrhli a nasadili fungující MVP během 24 až 48 hodin.',
+    'Built dynamic UI components and REST API endpoints for user progression and leaderboards.':'Vytvořil jsem dynamické UI komponenty a REST API pro postup uživatelů a žebříčky.',
+    'Debugged live and collaborated in an agile team under pressure.':'Ladil jsem za běhu a spolupracoval v agilním týmu pod tlakem.',
+    'Pitch / Demo':'Prezentace / Demo','Source Code':'Zdrojový kód','Certificate':'Certifikát',
+    '½ tab in the morning':'½ tbl ráno','Snap the medicine. The doctor sees it in seconds.':'Vyfoťte lék. Lékař ho uvidí za pár vteřin.',
+    'An app that turns a photo of a medicine box or a handwritten note into a clear medication record for the doctor.':'Aplikace, která z fotky krabičky léku nebo ručně psaného lístečku udělá přehledný záznam pro lékaře.',
+    'Photo capture of medicine boxes and dosage notes.':'Focení krabiček léků a poznámek o dávkování.',
+    'A tidy patient record the doctor can read in seconds.':'Přehledný záznam pacienta, který lékař přečte za pár vteřin.',
+    'App interface design and a presentation website.':'Návrh rozhraní aplikace a prezentační web.',
+    'App design':'Design aplikace','View project':'Zobrazit projekt',
+    'Custom PCB Design & Microcontrollers':'Vlastní návrh PCB a mikrokontroléry','Embedded':'Vestavěné systémy',
+    'Custom circuit design, prototyping and firmware for embedded control systems, from schematic to a soldered board.':'Vlastní návrh obvodů, prototypování a firmware pro vestavěné řídicí systémy, od schématu po zapájenou desku.',
+    'Breakout boards, sensor modules and automation triggers.':'Breakout desky, senzorové moduly a spouštěče automatizace.',
+    'Firmware in C++ for sensor readings and I2C, SPI and UART communication.':'Firmware v C++ pro čtení senzorů a komunikaci přes I2C, SPI a UART.',
+    '2D and 3D trace layouts shown next to photos of the assembled boards.':'2D a 3D rozvržení spojů vedle fotek osazených desek.',
+    'Soldering':'Pájení','Visual Gallery':'Galerie','Firmware Source':'Zdroj firmwaru',
+    'ENCLOSURE · CAD → PRINT':'KRYT · CAD → TISK',
+    'CAD, 3D Printing & FPV Engineering':'CAD, 3D tisk a stavba FPV dronů','Design to production':'Od návrhu k výrobě',
+    'A complete design-to-production workflow for mechanical parts and custom FPV drone systems.':'Celý postup od návrhu po výrobu mechanických dílů a vlastních FPV dronů.',
+    'Enclosures and mechanical adapters modelled in Fusion and printed in-house.':'Kryty a mechanické adaptéry navržené ve Fusionu a vytištěné vlastními silami.',
+    'FPV builds with integrated ESC, flight controller, camera and receiver.':'FPV stavby s integrovaným ESC, řídicí jednotkou, kamerou a přijímačem.',
+    'Custom power distribution and Betaflight tuning.':'Vlastní rozvod napájení a ladění v Betaflightu.',
+    '3D Printing':'3D tisk','FPV Hardware':'FPV hardware','3D Models':'3D modely','Build Log':'Deník stavby',
+    'Staff':'Zaměstnanci','Servers':'Servery','Guests':'Hosté',
+    'Enterprise Network Administration':'Správa firemních sítí','Networks & infrastructure':'Sítě a infrastruktura',
+    'Practical deployment of commercial networks, with segmentation and authenticated access.':'Praktické nasazování firemních sítí se segmentací a ověřeným přístupem.',
+    'VLAN segmentation, trunk links and RADIUS authentication workflows.':'Segmentace pomocí VLAN, trunk spoje a ověřování přes RADIUS.',
+    'Structured cabling to T568B, device mounting and switch configuration for commercial clients.':'Strukturovaná kabeláž podle T568B, montáž zařízení a konfigurace switchů pro firemní klienty.',
+    'Topology diagrams drawn in Cisco Packet Tracer or Draw.io.':'Topologické schémata vytvořená v Cisco Packet Traceru nebo Draw.io.',
+    'Topology Diagrams':'Topologie sítě','Case Study':'Případová studie',
+    'Linux Administration & AI Workloads':'Správa Linuxu a AI úlohy','Systems':'Systémy',
+    'A daily-driver Linux setup used for self-hosted services and local language models.':'Linuxové prostředí pro každodenní práci, používané pro vlastní služby a lokální jazykové modely.',
+    'Docker containers, reverse proxies and local service hosting.':'Docker kontejnery, reverzní proxy a hostování lokálních služeb.',
+    'Local LLMs through Ollama or LM Studio, wired into development pipelines.':'Lokální LLM přes Ollama nebo LM Studio zapojené do vývojového procesu.',
+    'A custom Hyprland / HyDE desktop with dotfiles tuned for command-line speed.':'Vlastní plocha Hyprland / HyDE s dotfiles vyladěnými na rychlost práce v terminálu.',
+    'Dotfiles':'Dotfiles','Setup Notes':'Poznámky k nastavení',
+    'Under the hood · example snippets':'Pod kapotou · ukázky kódu',
+    'sensor.ino · I2C temperature read':'sensor.ino · čtení teploty přes I2C','switch.cfg · Cisco IOS trunk':'switch.cfg · Cisco IOS trunk',
+    '02 · Technical competencies':'02 · Technické dovednosti','One stack,':'Jeden stack,','three layers.':'tři vrstvy.',
+    'From the browser down to the cable and the circuit board.':'Od prohlížeče až po kabel a plošný spoj.',
+    'Software Dev':'Vývoj softwaru','Applications & APIs':'Aplikace a API','Infrastructure':'Infrastruktura','Networks & servers':'Sítě a servery',
+    'Hardware Design':'Návrh hardwaru','Boards, parts & drones':'Desky, díly a drony','3D printing':'3D tisk','Protocols I work with':'Protokoly, se kterými pracuji',
+    '03 · Experience & leadership':'03 · Zkušenosti a vedení lidí','Work that':'Práce, která','taught me':'mě naučila','the rest.':'zbytek.',
+    'Client installations, a decade of leading young people, and an IT education.':'Instalace u klientů, deset let vedení mladých lidí a IT vzdělání.',
+    '10+ yrs':'10+ let','Scout · Youth leader':'Skaut · Vedoucí oddílu','Scout Youth Leader':'Skautský vedoucí oddílu',
+    'Led weekly activities and summer camps for youth groups, managing logistics, budgeting and safety.':'Vedl jsem pravidelné schůzky a letní tábory pro děti a mládež, včetně logistiky, rozpočtu a bezpečnosti.',
+    'Built team leadership, crisis management, clear communication and conflict resolution skills.':'Rozvinul jsem vedení týmu, krizové řízení, srozumitelnou komunikaci a řešení konfliktů.',
+    '2021 – Present':'2021 – dosud','IT Support & Network Installation Specialist':'IT podpora a specialista na instalaci sítí',
+    'Managed hardware installations, corporate network deployments and troubleshooting for business clients.':'Zajišťoval jsem instalace hardwaru, nasazení firemních sítí a řešení problémů pro firemní klienty.',
+    'Ran diagnostic maintenance on workstations, network hardware and peripherals.':'Prováděl jsem diagnostiku a údržbu pracovních stanic, síťového hardwaru a periferií.',
+    'Gave technical consultation and fast incident resolution for non-technical users.':'Poskytoval jsem technické poradenství a rychlé řešení potíží pro uživatele bez technického zázemí.',
+    'Shipped a gamified learning platform in a 24 to 48 hour window, working as a full-stack developer in a small team.':'Za 24 až 48 hodin jsem v malém týmu jako full-stack vývojář dodal gamifikovanou výukovou platformu.',
+    'Currently':'Aktuálně','Information Technology student':'Student informačních technologií',
+    'EDUCAnet Brno. Studying the theory while applying it in client work, side projects and my own lab.':'EDUCAnet Brno. Učím se teorii a hned ji používám v práci pro klienty, ve vlastních projektech a ve vlastní laboratoři.',
+    "Let's build":'Pojďme postavit','something.':'něco.','Resume (PDF)':'Životopis (PDF)',
+    'Bridging':'Propojuji','software, networks':'software a sítě','and custom hardware.':'a vlastní hardware.',
+    'Full-Stack Developer & Network / Hardware Specialist':'Full-stack vývojář a specialista na sítě a hardware','Back to top ↑':'Zpět nahoru ↑',
+    'Jiří Pölzer, home':'Jiří Pölzer, domů','Change language':'Změnit jazyk','Menu':'Menu',
+    'Stylised circuit board with a JP chip in the centre':'Stylizovaná deska plošných spojů s čipem JP uprostřed',
+    'Filter projects':'Filtrovat projekty','Link coming soon':'Odkaz brzy',
+    'PCB layout with a microcontroller, traces and pads':'Rozvržení PCB s mikrokontrolérem, spoji a pájecími ploškami',
+    'Wireframe enclosure next to a drone with spinning propellers':'Drátěný model krytu vedle dronu s rotujícími vrtulemi',
+    'Network topology with a router, a switch, three VLANs and a RADIUS server':'Topologie sítě s routerem, switchem, třemi VLAN a RADIUS serverem',
+    'Terminal session with Docker and Ollama commands':'Terminál s příkazy Docker a Ollama'
+  };
+  var ROT={
+    en:['builds web apps','routes PCB traces','configures VLANs','tunes FPV drones','runs Arch Linux','leads scout camps'],
+    cs:['tvoří webové aplikace','vede spoje na PCB','konfiguruje VLANy','ladí FPV drony','používá Arch Linux','vede skautské tábory']
+  };
+  var rotEl=$('#rot'),textNodes=[],attrNodes=[];
+  (function collect(){
+    var tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      var p=n.parentNode;if(!n.nodeValue.trim()||p.closest('pre,script,style,#term,#rot,#qq,#qo,#qn,#qs,.lang,#giant'))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT}});
+    var n;while((n=tw.nextNode()))textNodes.push({n:n,o:n.nodeValue});
+    $$('[aria-label],[title]').forEach(function(el){
+      ['aria-label','title'].forEach(function(a){if(el.hasAttribute(a))attrNodes.push({el:el,a:a,o:el.getAttribute(a)})});
+    });
+  })();
+  function tr(v,cs){
+    if(!cs)return v;
+    var m=v.match(/^(\s*)([\s\S]*?)(\s*)$/),k=m[2];
+    return CS[k]!==undefined?m[1]+CS[k]+m[3]:v;
+  }
+  function setRot(lang){
+    if(!rotEl)return;
+    rotEl.textContent='';
+    ROT[lang].forEach(function(t,i){var s=document.createElement('span');s.textContent=t;if(i===0)s.className='on';rotEl.appendChild(s)});
+    words=$$('#rot span');w=0;
+  }
+  function setLang(lang,save){
+    LANG=lang;var cs=lang==='cs';
+    document.documentElement.lang=lang;document.documentElement.setAttribute('data-lang',lang);
+    textNodes.forEach(function(t){t.n.nodeValue=tr(t.o,cs)});
+    attrNodes.forEach(function(t){t.el.setAttribute(t.a,tr(t.o,cs))});
+    $('#giant').setAttribute('aria-label','Jiří Pölzer');
+    setRot(lang);
+    Q=QD[lang];qi=0;pts=0;showQ();
+    if(save){try{localStorage.setItem('lang',lang)}catch(e){}}
+  }
+  $('#lang').addEventListener('click',function(){setLang(LANG==='cs'?'en':'cs',true)});
+  setLang(LANG,false);
+})();
+</script>
+
+</body></html>
